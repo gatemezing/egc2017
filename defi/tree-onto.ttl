@@ -136,14 +136,14 @@ tonto:raisonPlantation a owl:DatatypeProperty, rdf:Property ;
     rdfs:isDefinedBy <http://data.lof.com/def/tonto> ;
     .
 
-tonto:stateDeDev a owl:DatatypeProperty, rdf:Property ;
+tonto:stadeDeDev a owl:DatatypeProperty, rdf:Property ;
     rdfs:label "Stade de développement"@fr ;
     rdfs:range xsd:string ;
     rdfs:isDefinedBy <http://data.lof.com/def/tonto> ;
     .
 
 
-tonto:stateDevDiag a owl:DatatypeProperty, rdf:Property ;
+tonto:stadeDevDiag a owl:DatatypeProperty, rdf:Property ;
     rdfs:label "Stade développement diagnostic"@fr ;
     rdfs:range xsd:string ;
     rdfs:isDefinedBy <http://data.lof.com/def/tonto> ;
