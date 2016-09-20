@@ -7,3 +7,11 @@ les participants peuvent s’ils le souhaitent avoir recours à des données ext
 
 Les participants peuvent traiter au choix l’une de ces tâches ou les deux et, un retour sur la qualité des
 données (complétude, redondance, etc) dans un contexte open data sera apprécié. 
+
+
+== Liste des problemes sur les données===
+1 - Pas de precisions sur le systemes de coordonnees (manque des metadata) pour savoir commment reutiliser dans les applis
+      ---> Rep: http://spatialreference.org/ref/epsg/3945/ (RGF 93/CC45)
+2 - Pas de liens entre les differents fichiers (sorte de cle?) 
+      ---> Rep: Au niveau des lignes de fichiers parce que meme nombre d'elts dans les 3 fichiers du Jeu 1
+3 - 
