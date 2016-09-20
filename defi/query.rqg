@@ -1,0 +1,17 @@
+PREFIX iter: <http://w3id.org/sparql-generate/iter/>
+PREFIX fn: <http://w3id.org/sparql-generate/fn/>
+PREFIX wgs84_pos: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+
+GENERATE { 
+  ?s a <http://linkedgeodata.org/ontology/Tree> ;
+    wgs84_pos:lat ?lat ;
+    wgs84_pos:long ?long .
+}
+SOURCE <https://raw.githubusercontent.com/noorbakerally/spatial_ref_conv/master/geoloc_result> AS ?source
+ITERATOR iter:JSONListKeys(?source) AS ?code
+WHERE {
+   BIND (URI(CONCAT("http://data.lof.com/id/tree/",LCASE(?code))) AS ?s)
+   BIND( fn:JSONPath( ?source, CONCAT("$['",?code,"']['x']")) AS ?long )
+   BIND( fn:JSONPath( ?source, CONCAT("$['",?code,"']['y']")) AS ?lat )
+ 
+}
