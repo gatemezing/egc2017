@@ -10,6 +10,7 @@
 @prefix dct: <http://purl.org/dc/terms/>.
 @prefix vann: <http://purl.org/vocab/vann/>.
 @prefix voaf: <http://purl.org/vocommons/voaf#>.
+@prefix topo: <http://data.ign.fr/def/topo#>.
 
 # metadata info for the ontology here 
 <http://data.lof.com/def/tonto>
@@ -17,17 +18,19 @@
     rdfs:label "Tonto- Tree Onto -A vocabulary for describing trees in RDF"@en;
     rdfs:label "Un vocabulaire pour representer les arbres en RDF"@fr;
     dct:creator "Ghislain Atemezing";
-    dct:contributor "Antoine Zimmerman";
-                 
+    dct:contributor "Antoine Zimmerman";            
     dct:issued "2016-09-16"^^xsd:date;
-    dct:modified "2016-09-19"^^xsd:date;
+    dct:modified "2016-09-22"^^xsd:date;
     vann:preferredNamespacePrefix "tonto" ;
-    owl:versionInfo "0.1" ;
+    owl:versionInfo "0.2" ;
     .
 
 # classes here 
 # For now, we reuse lgdo:Tree 
-
+tonto:Secteur a owl:Class ;
+	rdfs:label "Secteur"@fr;
+	rdfs:subClassOf topo:EntiteTopographique ;
+	.
 
 # Object properties here
 
@@ -45,13 +48,15 @@ tonto:sousCategorie a owl:ObjectProperty, rdf:Property ;
      rdfs:isDefinedBy <http://data.lof.com/def/tonto> ;
     .
 
-# Data Properties here
-
-tonto:secteur a owl:DatatypeProperty, rdf:Property ;
+tonto:secteur a owl:ObjectProperty, rdf:Property ;
     rdfs:label "Secteur"@fr ;
-    rdfs:range xsd:string ;
+    rdfs:range tonto:Secteur ;
     rdfs:isDefinedBy <http://data.lof.com/def/tonto> ;
     .
+
+# Data Properties here
+
+
 
 
 tonto:anneeDePlantation a owl:DatatypeProperty, rdf:Property ;
