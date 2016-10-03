@@ -1,8 +1,8 @@
 %% -*- TeX -*- -*- FR -*-
 
-%Avant propos : ces exemples de fichiers ont Ã©tÃ© mis Ã  jour grÃ¢ce Ã 
-%l'aide prÃ©cieuse de Gilbert Ritschard. Pour toute question ou
-%remarque n'hÃ©sitez pas Ã  nous contacter : venturin@univ-tours.fr ou
+%Avant propos : ces exemples de fichiers ont été mis à jour grâce à
+%l'aide précieuse de Gilbert Ritschard. Pour toute question ou
+%remarque n'hésitez pas à nous contacter : venturin@univ-tours.fr ou
 %gilbert.ritschard@themes.unige.ch
 %Version 2005-10-01
 
@@ -10,23 +10,23 @@
 %\documentclass[a4paper,french,noresume]{rnti} %% Pour papier de 2 pages
 
 %%% Avec l'option "showlayout" vous obtenez les deux pages
-%%% de contrÃ´le des paramÃ¨tres de mise en page.
+%%% de contrôle des paramètres de mise en page.
 
 \documentclass[a4paper,pagenum,french,showlayout]{rnti}
 
 
 \usepackage{graphicx}
-%packages nÃ©cessaires pour Ã©crire des articles en franÃ§ais en utilisant les accents non latex.
+%packages nécessaires pour écrire des articles en français en utilisant les accents non latex.
 \usepackage[T1]{fontenc}
 \usepackage[latin1]{inputenc}
 
-%pour bien prÃ©senter les URL et autres adresses emails
+%pour bien présenter les URL et autres adresses emails
 \usepackage{url}
 
-% Titre court pour entÃªte
-\titrecourt{Un outil gÃ©nÃ©rique et personnalisable pour la visualisation de donnÃ©es gÃ©ospatiales}
+% Titre court pour entête
+\titrecourt{GéoCarteApp: Un outil générique et personnalisable pour la visualisation de données géospatiales}
 
-% Noms auteurs pour entÃªte :
+% Noms auteurs pour entête :
 %    Si un seul auteur, mettre : Initiale. NomPremierAuteur
 %    Si deux auteurs, mettre : Initiale1. NomPremierAuteur et Initiale1. NomDeuxiemeAuteur
 %    Si plus de deux auteurs, mettre comme ci-dessous
@@ -34,7 +34,7 @@
 \nomcourt{I. NomPremierAuteur et al.}
 
 
-\titre{Un outil gÃ©nÃ©rique et personnalisable pour la visualisation de donnÃ©es gÃ©ospatiales}
+\titre{GéoCarteApp: Un outil générique et personnalisable pour la visualisation de données géospatiales}
 
 \auteur{Noorani Bakerally\affil{1},
         Ghislain Atemezing\affil{2}\\
@@ -44,16 +44,16 @@
     \affil{1}Univ Lyon, MINES Saint-\'Etienne, CNRS, Laboratoire Hubert Curien UMR 5516, \\F-42023 Saint-\'Etienne, France\\
           \{prenom.nom\}@emse.fr\\
     %
-    \affil{2}Autre adresse\\
-          autre-adresse@email\\
-          \http{http://www.une-autre-page.html}
+    \affil{2}Mondeca, \\ 35 boulevard Strasbourg, Paris, France\\
+          ghislain.atemezing@mondeca.com\\
+          \http{http://www.mondeca.com}
  }
 
 \resume{%
-Ces instructions pour la prÃ©paration d'articles pour RNTI sous
-\LaTeX\ doivent Ãªtre respectÃ©es strictement pour assurer une
-prÃ©sentation cohÃ©rente aux articles. Merci de ne pas modifier le
-formatage des diffÃ©rents textes. Ce rÃ©sumÃ© doit faire au plus 150
+Ces instructions pour la préparation d'articles pour RNTI sous
+\LaTeX\ doivent être respectées strictement pour assurer une
+présentation cohérente aux articles. Merci de ne pas modifier le
+formatage des différents textes. Ce résumé doit faire au plus 150
 mots.
 %
 }
@@ -73,55 +73,50 @@ abstract should not exceed 150 words.
 \section{Introduction}
 
 Pour produire un article en \LaTeX\ nous recommandons d'utiliser la
-classe \textit{rnti.cls} version~3. Voir Ã©galement le guide
+classe \textit{rnti.cls} version~3. Voir également le guide
 d'utilisation de la classe \citep{ritschard:2005rnti}. Merci de
-vÃ©rifier qu'il ne subsiste pas d'\emph{overfull box} (dÃ©passement
+vérifier qu'il ne subsiste pas d'\emph{overfull box} (dépassement
 des marges).
 
 Pour les textes de 2 pages ou moins (posters), ne pas mettre de
-rÃ©sumÃ© au dÃ©but. On donnera cependant un ``summary'' (en anglais)
+résumé au début. On donnera cependant un ``summary'' (en anglais)
 d'au plus 40 mots en fin de texte. Utiliser pour cela l'option
-\textit{noresume} qui supprime le rÃ©sumÃ© mais maintient le summary.
+\textit{noresume} qui supprime le résumé mais maintient le summary.
 
-\section{Consignes pour le texte}
+\section{GéoCarteApp: Approche Générique}
 
-Exemple de section de niveau 1.  Voici un premier paragraphe. Voici
-un premier paragraphe, Voici un premier paragraphe, Voici un premier
-paragraphe, Voici un premier paragraphe, Voici un premier
-paragraphe, Voici un premier paragraphe, Voici un premier
-paragraphe, Voici un premier paragraphe, Voici un premier
-paragraphe.
+\section{Application aux données de Grenoble}
 
-Le texte est en Times 10 points (faites appel Ã  l'extension
-\textit{times.sty} si vous n'utilisez pas la classe \textit{rnti}).
-Le texte de chaque page y compris les entÃªtes et pieds de pages doit
-appartenir Ã  une zone de 19.3 cm par 13.2 cm centrÃ©e horizontalement
-et verticalement sur la page.
+\subsection{Transformation et Enrichissement des données}
+
+\subsection{Transformation}
+
+\subsection{Enrichissement}
 
 
-\subsection{Section de niveau 2}
+\section{Cas d'usage}
 
-Exemple de section de niveau 2.
+\section{Préconisations sur les données}
 
 
 \subsubsection{Section de niveau 3}
 
-Exemple de section de niveau 3. Il vaut mieux Ã©viter, dans la mesure
+Exemple de section de niveau 3. Il vaut mieux éviter, dans la mesure
 du possible, d'utiliser ce niveau de section surtout pour les
-articles courts. Utiliser de prÃ©fÃ©rence
+articles courts. Utiliser de préférence
 \verb+\paragraph{+\textit{Titre du paragraphe.}\verb+}+ qui produit
 
 \paragraph{Titre du paragraphe.} Ceci est un exemple de section type
-paragraphe. On note l'absence de numÃ©rotation.
+paragraphe. On note l'absence de numérotation.
 
-\subsection{Liste d'Ã©lÃ©ments}
+\subsection{Liste d'éléments}
 
 Merci de respecter les styles suivants pour les listes.
 
-Exemple de liste sans numÃ©rotation :
+Exemple de liste sans numérotation :
 \begin{itemize}
     \item premier item ;
-    \item deuxiÃ¨me item ;
+    \item deuxième item ;
     \begin{itemize}
       \item premier sous-item,
       \item second sous-item,
@@ -130,10 +125,10 @@ Exemple de liste sans numÃ©rotation :
   \item dernier item.
 \end{itemize}
 
-Autre liste possible avec numÃ©rotation :
+Autre liste possible avec numérotation :
 \begin{enumerate}
     \item premier item ;
-    \item deuxiÃ¨me item ;
+    \item deuxième item ;
     \begin{enumerate}
       \item premier sous-item,
       \item second sous-item,
@@ -145,11 +140,11 @@ Autre liste possible avec numÃ©rotation :
 \subsection{Tables, Figures}
 
 
-Les tableaux et figures doivent Ãªtre centrÃ©s horizontalement. Les
-lÃ©gendes sont placÃ©es sous ces mÃªmes Ã©lÃ©ments et sont centrÃ©es si
-elle font moins d'une ligne et justifiÃ©es sinon. Voir le
+Les tableaux et figures doivent être centrés horizontalement. Les
+légendes sont placées sous ces mêmes éléments et sont centrées si
+elle font moins d'une ligne et justifiées sinon. Voir le
 tableau~\ref{tab_exemple} et la figure~\ref{fig_exemple} pour des
-exemples. Les lÃ©gendes doivent se terminer avec un point.
+exemples. Les légendes doivent se terminer avec un point.
 
 
 
@@ -158,103 +153,102 @@ exemples. Les lÃ©gendes doivent se terminer avec un point.
    \tabcolsep = 2\tabcolsep
    \begin{tabular}{lcc}
    \hline\hline
-                & modÃ¨le 1 & modÃ¨le 2 \\
+                & modèle 1 & modèle 2 \\
    \hline
    indicateur 1 & 1        & 2        \\
    indicateur 2 & 2        & 1        \\
    indicateur 3 & 1        & 1        \\
    \hline
    \end{tabular}
-\caption{Exemple de tableau avec sa lÃ©gende.} \label{tab_exemple}
+\caption{Exemple de tableau avec sa légende.} \label{tab_exemple}
  \end{center}
 \end{table}
 
-Pour les tableaux, Ã©viter de multiplier les lignes sÃ©paratrices de
+Pour les tableaux, éviter de multiplier les lignes séparatrices de
 colonnes et de lignes, cela alourdi inutilement la page.
 
 
 \begin{figure}[t]
 \begin{center}
- \includegraphics[width=6cm]{fg_complex}
- \caption{Exemple de figure avec sa lÃ©gende. La lÃ©gende est centrÃ©e,
+% \includegraphics[width=6cm]{fg_complex}
+ \caption{Exemple de figure avec sa légende. La légende est centrée,
 sauf si, comme ici, elle fait plus d'une ligne, auquel cas elle est
-justifiÃ©e.} \label{fig_exemple}
+justifiée.} \label{fig_exemple}
 \end{center}
 \end{figure}
 
-N'oubliez pas, le cas Ã©chÃ©ant, d'indiquer la signification des axes
+N'oubliez pas, le cas échéant, d'indiquer la signification des axes
 sur vos graphiques.
 
 
-\subsection{Notes de bas de pages}
+\section{Conclusion et Perspectives}
 
-Le texte de la note apparaÃ®t en bas de la page.\footnote{Exemple de
+Le texte de la note apparaît en bas de la page.\footnote{Exemple de
 note de bas de page.}
 
-\subsection{Noms des auteurs et titre court dans l'entÃªte}
+\subsection{Noms des auteurs et titre court dans l'entête}
 
-Pour les noms des auteurs utilisÃ©s dans l'entÃªte de l'article, merci
-de faire figurer un ou deux noms (avec initiales des prÃ©noms) pour
-des articles Ã  un ou deux auteurs (``Initiale. NomPremierAuteur'',
-ou ``Initiale1. NomPremierAuteur et Initiale2. NomDeuxiÃ¨meAuteur''),
-et pour les articles Ã  trois auteurs ou plus, utiliser une notation
-du type ``Initiale. NomPremierAuteur et al.''. Seule la premiÃ¨re
-lettre des noms doit Ãªtre en capitale, le reste est en minuscules.
-De mÃªme, le titre court doit Ãªtre en minuscules.
+Pour les noms des auteurs utilisés dans l'entête de l'article, merci
+de faire figurer un ou deux noms (avec initiales des prénoms) pour
+des articles à un ou deux auteurs (``Initiale. NomPremierAuteur'',
+ou ``Initiale1. NomPremierAuteur et Initiale2. NomDeuxièmeAuteur''),
+et pour les articles à trois auteurs ou plus, utiliser une notation
+du type ``Initiale. NomPremierAuteur et al.''. Seule la première
+lettre des noms doit être en capitale, le reste est en minuscules.
+De même, le titre court doit être en minuscules.
 
 
 
 \subsection{Pas de pagination, page A4 et article final au format PDF}
 
-Ne pas indiquer la numÃ©rotation des pages de votre article car
-celle-ci sera ajoutÃ©e lors de la fabrication du numÃ©ro.
+Ne pas indiquer la numérotation des pages de votre article car
+celle-ci sera ajoutée lors de la fabrication du numéro.
 
-Dans la version soumise pour Ã©valuation, il est souhaitable
-cependant de numÃ©roter les pages. Ceci facilite les commentaires des
+Dans la version soumise pour évaluation, il est souhaitable
+cependant de numéroter les pages. Ceci facilite les commentaires des
 relecteurs.
 
-L'article final doit Ãªtre impÃ©rativement remis au format PDF avec
+L'article final doit être impérativement remis au format PDF avec
 une dimension de page A4 (la taille letter n'est pas admise).
 L'option \texttt{a4paper} produit du format A4 seulement si vous
 compilez avec pdf\LaTeX{}. Si vous produisez un .dvi ou .ps que vous
 covertissez ensuite en pdf avec par exemple dvi2pdf ou ps2pdf, il
 vous appartient de configurer correctement votre convertisseur ou de
-lui fournir l'option appropriÃ©e (-pagesize=A4).
+lui fournir l'option appropriée (-pagesize=A4).
 
 
-\section{Consignes pour les rÃ©fÃ©rences}
+\section{Consignes pour les références}
 
-Les rÃ©fÃ©rences sont donnÃ©es en fin d'article avant le
-\guilo{}Summary\guilf{}. Elles doivent Ãªtre listÃ©es par ordre
-alphabÃ©tique.  Nous vous recommandons l'utilisation de
+Les références sont données en fin d'article avant le
+\guilo{}Summary\guilf{}. Elles doivent être listées par ordre
+alphabétique.  Nous vous recommandons l'utilisation de
 \textsc{Bib}\TeX\ avec le style bibliographique \textit{rnti.bst}
-dÃ©crit dans \citet{ritschard:2005rnti}. Si vous n'utilisez pas ce
-style, merci de suivre les exemples donnÃ©s Ã  la fin de cet exemple
+décrit dans \citet{ritschard:2005rnti}. Si vous n'utilisez pas ce
+style, merci de suivre les exemples donnés à la fin de cet exemple
 d'article.
 
 Dans le corps du texte, on utilise \citet{thSau00}, \citet{HolWil90}
-pour faire rÃ©fÃ©rence Ã  un article avec un ou deux auteurs et
-\citet{lioni01} lorsque trois auteurs ou plus sont prÃ©sents.  Selon
+pour faire référence à un article avec un ou deux auteurs et
+\citet{lioni01} lorsque trois auteurs ou plus sont présents.  Selon
 les cas, on pourra aussi utiliser \citep{thSau00} ou
 \citep[voir][chapitre 4]{brei:frie:olsh:ston:1984}, ou encore
 \citet{quin:1986ID3,quin:1993} dans le cas de citations multiples
-d'un mÃªme auteur. Merci de suivre ces exemples.
+d'un même auteur. Merci de suivre ces exemples.
 
 \section{Soumission de papiers anonymes}
 
-Dans certains cas, par exemple pour la soumission de papiers Ã  EGC il est demandÃ© de soumettre des textes anonymes, c'est-Ã -dire sans noms d'auteurs ni affiliations. La classe \LaTeX{} \texttt{rnti.cls} offre pour cela l'option \texttt{submission} qui rend automatiquement invisible le nom des auteurs sans modifier la mise en page.
+Dans certains cas, par exemple pour la soumission de papiers à EGC il est demandé de soumettre des textes anonymes, c'est-à-dire sans noms d'auteurs ni affiliations. La classe \LaTeX{} \texttt{rnti.cls} offre pour cela l'option \texttt{submission} qui rend automatiquement invisible le nom des auteurs sans modifier la mise en page.
 
 \bibliographystyle{rnti}
-\bibliography{biblio_exemple}
+\bibliography{biblioaz}
 
 \appendix
 \section*{Annexe}
 
 Voici un exemple d'annexe. S'il y a plus de deux annexes, merci de
-les numÃ©roter (Annexe~1, Annexe~2, etc).
+les numéroter (Annexe~1, Annexe~2, etc).
 
 \Fr
 
 
 \end{document}
-
