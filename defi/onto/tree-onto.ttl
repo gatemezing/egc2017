@@ -21,8 +21,9 @@
     dct:contributor "Antoine Zimmerman";            
     dct:issued "2016-09-16"^^xsd:date;
     dct:modified "2016-09-22"^^xsd:date;
+    dct:modified "2016-10-05"^^xsd:date;
     vann:preferredNamespacePrefix "tonto" ;
-    owl:versionInfo "0.2" ;
+    owl:versionInfo "0.2.1" ;
     .
 
 # classes here 
@@ -30,6 +31,10 @@
 tonto:Secteur a owl:Class ;
 	rdfs:label "Secteur"@fr;
 	rdfs:subClassOf topo:EntiteTopographique ;
+	.
+
+tonto:GenreBotanique a owl:Class ;
+	rdfs:label "Genre botanique"@fr;
 	.
 
 # Object properties here
@@ -51,6 +56,13 @@ tonto:sousCategorie a owl:ObjectProperty, rdf:Property ;
 tonto:secteur a owl:ObjectProperty, rdf:Property ;
     rdfs:label "Secteur"@fr ;
     rdfs:range tonto:Secteur ;
+    rdfs:isDefinedBy <http://data.lof.com/def/tonto> ;
+    .
+
+
+tonto:genreBotanique a owl:ObjectProperty, rdf:Property ;
+    rdfs:label "Genre Botanique"@fr ;
+    rdfs:range tonto:GenreBotanique ;
     rdfs:isDefinedBy <http://data.lof.com/def/tonto> ;
     .
 
@@ -101,11 +113,7 @@ tonto:frequentationCible a owl:DatatypeProperty, rdf:Property ;
     rdfs:isDefinedBy <http://data.lof.com/def/tonto> ;
     .
 
-tonto:genreBotanique a owl:DatatypeProperty, rdf:Property ;
-    rdfs:label "Genre Botanique"@fr ;
-    rdfs:range xsd:string ;
-    rdfs:isDefinedBy <http://data.lof.com/def/tonto> ;
-    .
+
 
 tonto:identifiantPlu a owl:DatatypeProperty, rdf:Property ;
     rdfs:label "Identifiant Plu"@fr ;
