@@ -218,6 +218,12 @@ tonto:defautTronc a owl:DatatypeProperty, rdf:Property ;
     rdfs:isDefinedBy <http://data.lof.com/def/tonto> ;
     .
 
+tonto:potentiel_allergisant a owl:DatatypeProperty, rdf:Property ;
+    rdfs:label "Potentiel allergisant"@fr ;
+    rdfs:range xsd:integer ;
+    rdfs:isDefinedBy <http://data.lof.com/def/tonto> ;
+    .
+
 # External classes and properties
 lgdo:Tree a owl:Class, rdfs:Class ;
     rdfs:label "Tree"@en , "Arbre"@fr ;
