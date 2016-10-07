@@ -1,0 +1,72 @@
+@PREFIX tonto: <http://data.lof.com/def/tonto#> .
+@PREFIX tgrence: <http://data.lof.com/id/genre/> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+
+tgrence:Cupressus a tonto:GenreBotanique ;
+				rdfs:label "Cupressus";
+				tonto:potentiel_allergisant "5"^^xsd:integer .
+
+tgrence:Betula a tonto:GenreBotanique ;
+				rdfs:label "Betula";
+				tonto:potentiel_allergisant "5"^^xsd:integer .
+
+tgrence:Alnus a tonto:GenreBotanique ;
+				rdfs:label "Alnus";
+				tonto:potentiel_allergisant "4"^^xsd:integer .
+
+tgrence:Fraxinus a tonto:GenreBotanique ;
+				rdfs:label "Fraxinus";
+				tonto:potentiel_allergisant "4"^^xsd:integer .
+
+tgrence:Quercus a tonto:GenreBotanique ;
+				rdfs:label "Quercus";
+				tonto:potentiel_allergisant "4"^^xsd:integer .
+
+
+tgrence:Corylus a tonto:GenreBotanique ;
+				rdfs:label "Corylus";
+				tonto:potentiel_allergisant "3"^^xsd:integer .
+
+tgrence:Saule a tonto:GenreBotanique ;
+				rdfs:label "Saule";
+				tonto:potentiel_allergisant "3"^^xsd:integer .
+
+tgrence:Carpinus a tonto:GenreBotanique ;
+				rdfs:label "Carpinus";
+				tonto:potentiel_allergisant "3"^^xsd:integer .
+
+tgrence:Platanus a tonto:GenreBotanique ;
+				rdfs:label "Platanus";
+				tonto:potentiel_allergisant "3"^^xsd:integer .
+
+tgrence:Tilia a tonto:GenreBotanique ;
+				rdfs:label "Tilia";
+				tonto:potentiel_allergisant "3"^^xsd:integer .
+
+tgrence:OleaEuropaea a tonto:GenreBotanique ;
+				rdfs:label "Olea europaea";
+				tonto:potentiel_allergisant "3"^^xsd:integer .
+
+tgrence:Populus a tonto:GenreBotanique ;
+				rdfs:label "Populus";
+				tonto:potentiel_allergisant "2"^^xsd:integer .
+
+tgrence:Castanea a tonto:GenreBotanique ;
+				rdfs:label "Castanea";
+				tonto:potentiel_allergisant "2"^^xsd:integer .
+
+tgrence:Fagus a tonto:GenreBotanique ;
+				rdfs:label "Fagus";
+				tonto:potentiel_allergisant "2"^^xsd:integer .
+
+tgrence:Morus a tonto:GenreBotanique ;
+				rdfs:label "Morus";
+				tonto:potentiel_allergisant "2"^^xsd:integer .
+
+tgrence:Ulmus a tonto:GenreBotanique ;
+				rdfs:label "Ulmus";
+				tonto:potentiel_allergisant "1"^^xsd:integer .
+tgrence:Pinus a tonto:GenreBotanique ;
+				rdfs:label "Pinus";
+				tonto:potentiel_allergisant "0"^^xsd:integer .
