@@ -14,16 +14,68 @@
 
 \documentclass[a4paper,pagenum,french,showlayout]{rnti}
 
-
+\usepackage{xcolor}
 \usepackage{graphicx}
 %packages nécessaires pour écrire des articles en français en utilisant les accents non latex.
-%\usepackage[T1]{fontenc}
-%\usepackage[latin1]{inputenc}
+\usepackage{listings}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}  
 
 %pour bien présenter les URL et autres adresses emails
 \usepackage{url}
+
+
+\newcommand{\TODO}[1]{\textcolor{red}{\textbf{[TODO:#1]}}}
+% Language Definitions for Turtle
+\definecolor{MyLightGray}{RGB}{200, 200,200}
+% defining Turtle language
+\lstdefinelanguage{turtle}
+{
+    columns=fullflexible,
+    keywordstyle=\color{red},
+    morekeywords={PREFIX,SELECT,DISTINCT,UNION,FILTER,ORDER,BY,REGEX,STR,isBlank},
+    morecomment=[l]{\#},
+    tabsize=4,
+    frame=lines,
+    alsoletter={-?}, % allowed in names
+    morecomment=[s][\color{blue}]{<}{>},
+    basicstyle=\scriptsize\ttfamily\color{black},
+    %numberstyle=\color{black},
+    morestring=[b][\color{black}]\",
+    backgroundcolor=\color{background},    
+}
+
+\colorlet{punct}{red!60!black}
+\definecolor{background}{HTML}{EEEEEE}
+\definecolor{delim}{RGB}{20,105,176}
+\colorlet{numb}{magenta!60!black}
+
+\lstdefinelanguage{json}{
+    basicstyle=\scriptsize\ttfamily,
+    stepnumber=1,
+    numbersep=8pt,
+    showstringspaces=false,
+    breaklines=true,
+    frame=lines,
+    backgroundcolor=\color{background},
+    literate=
+     *{0}{{{\color{numb}0}}}{1}
+      {1}{{{\color{numb}1}}}{1}
+      {2}{{{\color{numb}2}}}{1}
+      {3}{{{\color{numb}3}}}{1}
+      {4}{{{\color{numb}4}}}{1}
+      {5}{{{\color{numb}5}}}{1}
+      {6}{{{\color{numb}6}}}{1}
+      {7}{{{\color{numb}7}}}{1}
+      {8}{{{\color{numb}8}}}{1}
+      {9}{{{\color{numb}9}}}{1}
+      {:}{{{\color{punct}{:}}}}{1}
+      {,}{{{\color{punct}{,}}}}{1}
+      {\{}{{{\color{delim}{\{}}}}{1}
+      {\}}{{{\color{delim}{\}}}}}{1}
+      {[}{{{\color{delim}{[}}}}{1}
+      {]}{{{\color{delim}{]}}}}{1},
+}
 
 % Titre court pour entête
 \titrecourt{GéoCarteApp: Un outil générique de visualisation de données géospatiales}
@@ -89,6 +141,26 @@ Visualiser les données géographiques sur le Web est une des premières applica
 	\item La source des données qui précise le type, l’URL ou endpoint et/ou la requête SPARQL.
 	\end{itemize}
 
+
+ \begin{lstlisting}[basicstyle=\tiny,float=htb,caption={Exemple de la configuration pour un SPARQL endpoint. },label=list:alignment, language=json]
+   "Test2": {
+			"type": "MarkerLayerConfig",
+			"name": "Test2",
+			"url": "/img/tree/tree-24-32.png",
+			"latCol": "lat",
+			"longCol": "long",
+			"initialShow":true,
+			"markerDescription": "The latitude and longitude for tree with <code> is <lat> and <long> respectively",
+			"description": "Description about Test 2",
+			"dataSource": {
+				"type": "SPARQLDataSource",
+				"url": "http://data.mondeca.com/egc2017/sparql",
+				"query": "PREFIX wgs84_pos:<http:\/\/www.w3.org\/2003\/01\/geo\/wgs84_pos#>\r\nPREFIX rdf: <http:\/\/www.w3.org\/1999\/02\/22-rdf-syntax-ns#>\r\nSELECT ?lat ?long ?code\r\nWHERE {\r\n  ?subject rdf:type <http:\/\/linkedgeodata.org\/ontology\/Tree>;\r\n\t\t wgs84_pos:lat ?lat;\r\n\t\t wgs84_pos:long ?long;\r\n\t\t <http:\/\/data.lof.com\/def\/tonto#code> ?code\r\n}\r\nLIMIT 25"
+			}
+		},
+
+	\end{lstlisting}
+	
 \section{Application aux données de Grenoble}
 Nous appliquons notre approche de visualisation des données hétérogènes géospatiales dans le domaine de l’environnement, plus particulièrement dans le meilleur suivi des arbres dans la ville de Grenoble en France. 
 
@@ -145,7 +217,7 @@ Autre liste possible avec numérotation :
 Les tableaux et figures doivent être centrés horizontalement. Les
 légendes sont placées sous ces mêmes éléments et sont centrées si
 elle font moins d'une ligne et justifiées sinon. Voir le
-tableau~\ref{tab_exemple} et la figure~\ref{fig_exemple} pour des
+tableau~\ref{tab_exemple} et la %figure~\ref{fig_exemple} pour des
 exemples. Les légendes doivent se terminer avec un point.
 
 
@@ -170,17 +242,16 @@ Pour les tableaux, éviter de multiplier les lignes séparatrices de
 colonnes et de lignes, cela alourdi inutilement la page.
 
 
-\begin{figure}[t]
-\begin{center}
+%\begin{figure}[t]
+%\begin{center}
 % \includegraphics[width=6cm]{fg_complex}
- \caption{Exemple de figure avec sa légende. La légende est centrée,
-sauf si, comme ici, elle fait plus d'une ligne, auquel cas elle est
-justifiée.} \label{fig_exemple}
-\end{center}
-\end{figure}
+ %\caption{Exemple de figure avec sa légende. La légende est centrée,
+%sauf si, comme ici, elle fait plus d'une ligne, auquel cas elle est
+%justifiée.} \label{fig_exemple}
+%\end{center}
+%\end{figure}
 
-N'oubliez pas, le cas échéant, d'indiquer la signification des axes
-sur vos graphiques.
+
 
 
 \section{Conclusion et Perspectives}
