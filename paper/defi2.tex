@@ -119,16 +119,16 @@ GeoSpatial data is becoming more and more important in numerous domains and avai
 %
 \section{Introduction}
 
-personalisation
-- same type of data but different configurations
+\TODO{personalisation} \\
+\TODO{- same type of data but different configurations}\\
 
-genericity
-- data about other data
-- mention of geonames
-    - geoname kinda similar feature but specific to their data structure
+\TODO{genericity ; data about other data ; mention of geonames
+    - geoname kinda similar feature but specific to their data structure}\\
     
 \textit{noresume} qui supprime le résumé mais maintient le summary.
 
+%% section: Approche générique %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{GéoCarteApp: Approche Générique}
 Visualiser les données géographiques sur le Web est une des premières applications dont un fond de carte permet de localiser les objets dans leurs emplacements. Cependant, lorsque nous avons des données structurées en RDF, les outils traditionnels existants sont limités car il faudrait en plus développer un traducteur permettant de prendre en entrée des données structurées. GéoCarteApp permet de visualiser nativement les données RDF et tout autres types de données spatiales basées sur les standards actuels OGC (geojson, GML, GeoSPARQL, etc). L’approche consiste à filtrer sur les classes, ainsi que les propriétés à visualiser. Par conséquent, l’utilisateur configure les objets à visualiser, avec les icônes personnalisées pour différencier les éléments. Une fois cette configuration effectuée, GéoCarteApp se charge de la visualisation sans autre intervention de l'utilisateur.
 	Le fichier de configuration permet ainsi de prendre des requêtes SPARQL, des URLs pour accéder à des fichiers json/geojson, etc. Ce fichier contient un minimum d’éléments à savoir:
@@ -178,6 +178,26 @@ Nous appliquons notre approche de visualisation des données hétérogènes géo
 \subsection{Visualiser les arbres ayant des défauts}
 
 \subsection{Visualiser les arbres allergisantes}
+Les arbres peuvent contenir en fonction des espèces botaniques du potentiel allergisant, selon les normes du Réseau national de surveillance aérobiologique (RNSA) qui classe des végétaux produisant des pollens à l'origine de symptômes d'allergie. Ils sont notés de 0 (nul) à 5 (très fort) sur une échelle de «potentiel allergisant». Nous avons modélisé en RDF un sous-ensemble de ces données, que nous avons enrichi nos données initiales sur les arbres de Grenoble\footnote{\url{https://github.com/gatemezing/egc2017/blob/master/defi/rdf-data/genrebotanique.ttl}}. Ainsi, il est donc possible d'avoir des informations sur les arbres pouvant causer des allergies, comme l'indique le tableau~\ref{tab_allergie}.
+
+\begin{table}[ht]
+ \begin{center}
+   \tabcolsep = 2\tabcolsep
+   \begin{tabular}{lcc}
+   \hline\hline
+                & Potentiel allergisant & Nbre arbres \\
+   \hline
+   Niveau 5 & 5        & 523       \\
+   Niveau 4  & 4        & 873        \\
+   Niveau 3 & 3       & 2974        \\
+   Niveau 2 & 2       & 550        \\
+   Niveau 1 & 1       & 53        \\
+   Niveau 0 & 0       & 641        \\
+   \hline
+   \end{tabular}
+\caption{Les arbres de Grenoble par potentiel allergisant} \label{tab_allergie}
+ \end{center}
+\end{table}
 
 \section{Préconisations sur les données}
 Les données de localisation proposées dans ce défi souffrent du manque des métadonnées nécessaires pour faciliter leur exploitation, au moins sur deux aspects importants: le type de coordonnées géographiques et la correspondance des (X,Y) par rapport aux latitudes et longitudes. Ces éléments sont fondamentaux pour faciliter la réutilisation des données géographiques, surtout en qui concerne le positionnement et la meilleure interprétation des objets contenus dans les données. Il a fallu déterminer par des scripts ad hoc que les données géographiques utilisaient du EPSG:3945 (RGF 93/CC45) en limitant aux systèmes de coordonnées utilisées en France. 
@@ -187,59 +207,19 @@ De même, entre les différents fichiers il n’existe pas de relation “explic
 Nous préconisons de mettre explicitation sur les métadonnées des informations de systèmes de coordonnées, ainsi que la mention de relations existantes entre les différents fichiers à exploiter par les utilisateurs. 
 
 
-\subsubsection{Section de niveau 3}
-
-Exemple de section de niveau 3. Il vaut mieux éviter, dans la mesure
-du possible, d'utiliser ce niveau de section surtout pour les
-articles courts. Utiliser de préférence
-\verb+\paragraph{+\textit{Titre du paragraphe.}\verb+}+ qui produit
-
-\paragraph{Titre du paragraphe.} Ceci est un exemple de section type
-paragraphe. On note l'absence de numérotation.
-
-
-
-Autre liste possible avec numérotation :
-\begin{enumerate}
-    \item premier item ;
-    \item deuxième item ;
-    \begin{enumerate}
-      \item premier sous-item,
-      \item second sous-item,
-      \item dernier sous-item.
-    \end{enumerate}
-  \item dernier item.
-\end{enumerate}
 
 \subsection{Tables, Figures}
-
 
 Les tableaux et figures doivent être centrés horizontalement. Les
 légendes sont placées sous ces mêmes éléments et sont centrées si
 elle font moins d'une ligne et justifiées sinon. Voir le
-tableau~\ref{tab_exemple} et la %figure~\ref{fig_exemple} pour des
+tableau~\ref{tab_exemple} et la figure~\ref{fig_exemple} pour des
 exemples. Les légendes doivent se terminer avec un point.
 
 
 
-\begin{table}[ht]
- \begin{center}
-   \tabcolsep = 2\tabcolsep
-   \begin{tabular}{lcc}
-   \hline\hline
-                & modèle 1 & modèle 2 \\
-   \hline
-   indicateur 1 & 1        & 2        \\
-   indicateur 2 & 2        & 1        \\
-   indicateur 3 & 1        & 1        \\
-   \hline
-   \end{tabular}
-\caption{Exemple de tableau avec sa légende.} \label{tab_exemple}
- \end{center}
-\end{table}
 
-Pour les tableaux, éviter de multiplier les lignes séparatrices de
-colonnes et de lignes, cela alourdi inutilement la page.
+
 
 
 %\begin{figure}[t]
