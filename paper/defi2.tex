@@ -78,8 +78,19 @@ genericity
 \textit{noresume} qui supprime le résumé mais maintient le summary.
 
 \section{GéoCarteApp: Approche Générique}
+Visualiser les données géographiques sur le Web est une des premières applications dont un fond de carte permet de localiser les objets dans leurs emplacements. Cependant, lorsque nous avons des données structurées en RDF, les outils traditionnels existants sont limités car il faudrait en plus développer un traducteur permettant de prendre en entrée des données structurées. GéoCarteApp permet de visualiser nativement les données RDF et tout autres types de données spatiales basées sur les standards actuels OGC (geojson, GML, GeoSPARQL, etc). L’approche consiste à filtrer sur les classes, ainsi que les propriétés à visualiser. Par conséquent, l’utilisateur configure les objets à visualiser, avec les icônes personnalisées pour différencier les éléments. Une fois cette configuration effectuée, GéoCarteApp se charge de la visualisation sans autre intervention de l'utilisateur.
+	Le fichier de configuration permet ainsi de prendre des requêtes SPARQL, des URLs pour accéder à des fichiers json/geojson, etc. Ce fichier contient un minimum d’éléments à savoir:
+	\begin{itemize}
+	\item Le type, représentant le marqueur sur la carte,
+	\item Le nom, associé à l’élément à visualiser
+	\item l’url représentant l’image associé à la classe à visualiser
+	\item La description pour le nom
+	\item Un booléen pour savoir si l’élément à visualiser sera visible au lancement de l’application
+	\item La source des données qui précise le type, l’URL ou endpoint et/ou la requête SPARQL.
+	\end{itemize}
 
 \section{Application aux données de Grenoble}
+Nous appliquons notre approche de visualisation des données hétérogènes géospatiales dans le domaine de l’environnement, plus particulièrement dans le meilleur suivi des arbres dans la ville de Grenoble en France. 
 
 \subsection{Transformation et Enrichissement des données}
 
@@ -90,9 +101,17 @@ genericity
 
 \section{Cas d'usage}
 
+\subsection{Visualiser les arbres proche des trottoirs}
+
+\subsection{Visualiser les arbres ayant des défauts}
+
+\subsection{Visualiser les arbres allergisantes}
+
 \section{Préconisations sur les données}
 Les données de localisation proposées dans ce défi souffrent du manque des métadonnées nécessaires pour faciliter leur exploitation, au moins sur deux aspects importants: le type de coordonnées géographiques et la correspondance des (X,Y) par rapport aux latitudes et longitudes. Ces éléments sont fondamentaux pour faciliter la réutilisation des données géographiques, surtout en qui concerne le positionnement et la meilleure interprétation des objets contenus dans les données. Il a fallu déterminer par des scripts ad hoc que les données géographiques utilisaient du EPSG:3945 (RGF 93/CC45) en limitant aux systèmes de coordonnées utilisées en France. 
+
 De même, entre les différents fichiers il n’existe pas de relation “explicite” permettant de les relier entre elles, comme les clés dans les bases de données. Ce manque d’information nécessite un travail supplémentaire pour l’utilisateur des données de faire une inférence basée sur le même nombre de lignes dans les différents fichiers pour faire une corrélation de similarité basée sur les lignes.
+
 Nous préconisons de mettre explicitation sur les métadonnées des informations de systèmes de coordonnées, ainsi que la mention de relations existantes entre les différents fichiers à exploiter par les utilisateurs. 
 
 
@@ -106,21 +125,7 @@ articles courts. Utiliser de préférence
 \paragraph{Titre du paragraphe.} Ceci est un exemple de section type
 paragraphe. On note l'absence de numérotation.
 
-\subsection{Liste d'éléments}
 
-Merci de respecter les styles suivants pour les listes.
-
-Exemple de liste sans numérotation :
-\begin{itemize}
-    \item premier item ;
-    \item deuxième item ;
-    \begin{itemize}
-      \item premier sous-item,
-      \item second sous-item,
-      \item dernier sous-item.
-  \end{itemize}
-  \item dernier item.
-\end{itemize}
 
 Autre liste possible avec numérotation :
 \begin{enumerate}
