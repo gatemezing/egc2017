@@ -89,6 +89,9 @@ genericity
 \section{Cas d'usage}
 
 \section{Préconisations sur les données}
+Les données de localisation proposées dans ce défi souffrent du manque des métadonnées nécessaires pour faciliter leur exploitation, au moins sur deux aspects importants: le type de coordonnées géographiques et la correspondance des (X,Y) par rapport aux latitudes et longitudes. Ces éléments sont fondamentaux pour faciliter la réutilisation des données géographiques, surtout en qui concerne le positionnement et la meilleure interprétation des objets contenus dans les données. Il a fallu déterminer par des scripts ad hoc que les données géographiques utilisaient du EPSG:3945 (RGF 93/CC45) en limitant aux systèmes de coordonnées utilisées en France. 
+De même, entre les différents fichiers il n’existe pas de relation “explicite” permettant de les relier entre elles, comme les clés dans les bases de données. Ce manque d’information nécessite un travail supplémentaire pour l’utilisateur des données de faire une inférence basée sur le même nombre de lignes dans les différents fichiers pour faire une corrélation de similarité basée sur les lignes.
+Nous préconisons de mettre explicitation sur les métadonnées des informations de systèmes de coordonnées, ainsi que la mention de relations existantes entre les différents fichiers à exploiter par les utilisateurs. 
 
 
 \subsubsection{Section de niveau 3}
