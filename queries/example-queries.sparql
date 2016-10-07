@@ -63,3 +63,14 @@ WHERE {
   Filter (regex(?fr, "fréquent", "i"))
   Filter (regex(?preco, "abat", "i"))
 }
+
+## Q5: Arbres avec leur potentiel allergisant supérieur à 4 ##
+
+prefix tonto: <http://data.lof.com/def/tonto#>
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+select ?s ?a
+from <http://data.tree.com>
+where {?s tonto:genreBotanique ?g.
+ ?g tonto:potentiel_allergisant ?a.
+  filter (?a = "4"^^xsd:integer)
+  }
