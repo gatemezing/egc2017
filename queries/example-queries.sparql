@@ -99,3 +99,19 @@ WHERE {
   FILTER ((?defaut = "1") && (?trottoir = "oui"))
   #Filter(isIRI(?genreBotanique))
 }
+
+## Q7: Les postes sur Grenoble . Endpoint: http://data.mondeca.com/laposte/sparql
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX tr: <http://data.lof.com/def/tonto#>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT distinct ?subject  ?label ?lat ?long
+
+WHERE {
+  ?subject rdf:type <http://www.w3.org/2006/vcard/ns#Organization>;
+         rdfs:label ?label;
+         wgs84_pos:lat ?lat ;
+         wgs84_pos:long ?long.
+  Filter (regex(?label, "grenoble", "i"))
+}
