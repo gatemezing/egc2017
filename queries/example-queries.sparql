@@ -74,3 +74,28 @@ where {?s tonto:genreBotanique ?g.
  ?g tonto:potentiel_allergisant ?a.
   filter (?a = "4"^^xsd:integer)
   }
+
+## Q6: Arbres ayant un defaut proche du trottoir par secteurs, ainsi que la note du diagnostique et la priorite de renouvellement
+
+PREFIX wgs84_pos:<http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX tr: <http://data.lof.com/def/tonto#>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+
+SELECT distinct ?subject  ?code  ?anneeDePlantation ?defaut ?noteDiag ?trottoir ?prioriteRenouvellement ?secteur 
+
+WHERE {
+  ?subject rdf:type <http://linkedgeodata.org/ontology/Tree>;
+          # wgs84_pos:lat ?lat;
+          #  wgs84_pos:long ?long;
+           tr:code ?code;
+           tr:secteur ?secteur;
+    tr:noteDiag ?noteDiag;
+    tr:prioriteRenouvellement ?prioriteRenouvellement;
+    tr:sousCategorie ?sousCategorie;
+    tr:trottoir ?trottoir;
+    tr:defaut ?defaut.
+   
+  FILTER ((?defaut = "1") && (?trottoir = "oui"))
+  #Filter(isIRI(?genreBotanique))
+}
