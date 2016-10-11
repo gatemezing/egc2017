@@ -12,87 +12,35 @@
 %%% Avec l'option "showlayout" vous obtenez les deux pages
 %%% de contrôle des paramètres de mise en page.
 
-\documentclass[a4paper,pagenum,french,showlayout]{rnti}
+\documentclass[a4paper,pagenum,english]{rnti}
 
-\usepackage{xcolor}
+
+
 \usepackage{graphicx}
 %packages nécessaires pour écrire des articles en français en utilisant les accents non latex.
-\usepackage{listings}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}  
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
 
 %pour bien présenter les URL et autres adresses emails
 \usepackage{url}
 
-
-\newcommand{\TODO}[1]{\textcolor{red}{\textbf{[TODO:#1]}}}
-% Language Definitions for Turtle
-\definecolor{MyLightGray}{RGB}{200, 200,200}
-% defining Turtle language
-\lstdefinelanguage{turtle}
-{
-    columns=fullflexible,
-    keywordstyle=\color{red},
-    morekeywords={PREFIX,SELECT,DISTINCT,UNION,FILTER,ORDER,BY,REGEX,STR,isBlank},
-    morecomment=[l]{\#},
-    tabsize=4,
-    frame=lines,
-    alsoletter={-?}, % allowed in names
-    morecomment=[s][\color{blue}]{<}{>},
-    basicstyle=\scriptsize\ttfamily\color{black},
-    %numberstyle=\color{black},
-    morestring=[b][\color{black}]\",
-    backgroundcolor=\color{background},    
-}
-
-\colorlet{punct}{red!60!black}
-\definecolor{background}{HTML}{EEEEEE}
-\definecolor{delim}{RGB}{20,105,176}
-\colorlet{numb}{magenta!60!black}
-
-\lstdefinelanguage{json}{
-    basicstyle=\scriptsize\ttfamily,
-    stepnumber=1,
-    numbersep=8pt,
-    showstringspaces=false,
-    breaklines=true,
-    frame=lines,
-    backgroundcolor=\color{background},
-    literate=
-     *{0}{{{\color{numb}0}}}{1}
-      {1}{{{\color{numb}1}}}{1}
-      {2}{{{\color{numb}2}}}{1}
-      {3}{{{\color{numb}3}}}{1}
-      {4}{{{\color{numb}4}}}{1}
-      {5}{{{\color{numb}5}}}{1}
-      {6}{{{\color{numb}6}}}{1}
-      {7}{{{\color{numb}7}}}{1}
-      {8}{{{\color{numb}8}}}{1}
-      {9}{{{\color{numb}9}}}{1}
-      {:}{{{\color{punct}{:}}}}{1}
-      {,}{{{\color{punct}{,}}}}{1}
-      {\{}{{{\color{delim}{\{}}}}{1}
-      {\}}{{{\color{delim}{\}}}}}{1}
-      {[}{{{\color{delim}{[}}}}{1}
-      {]}{{{\color{delim}{]}}}}{1},
-}
-
 % Titre court pour entête
-\titrecourt{GéoCarteApp: Un outil générique de visualisation de données géospatiales}
+\titrecourt{GéoCarteApp: Un outil générique et personnalisable pour la visualisation de données géospatiales}
 
 % Noms auteurs pour entête :
 %    Si un seul auteur, mettre : Initiale. NomPremierAuteur
 %    Si deux auteurs, mettre : Initiale1. NomPremierAuteur et Initiale1. NomDeuxiemeAuteur
 %    Si plus de deux auteurs, mettre comme ci-dessous
 %
-\nomcourt{I. Bakerally et al.}
+\nomcourt{I. NomPremierAuteur et al.}
 
 
 \titre{GéoCarteApp: Un outil générique et personnalisable pour la visualisation de données géospatiales}
 
 \auteur{Noorani Bakerally\affil{1},
         Ghislain Atemezing\affil{2}\\
-        Antoine Zimmermann\affil{1}}
+        Antoine Zimmermann\affil{1}\\
+        Olivier Boissier\affil{1}}
 
 \affiliation{
     \affil{1}Univ Lyon, MINES Saint-\'Etienne, CNRS, Laboratoire Hubert Curien UMR 5516, \\F-42023 Saint-\'Etienne, France\\
@@ -104,171 +52,146 @@
  }
 
 \resume{%
-GeoSpatial data is becoming more and more important in numerous domains and available on the Web. Many standards related to geospatial data such as GeoSPARQL or GML have been defined to facilitate interchange, reasoning and querying geodata on the Web. However, there are still many datasets provided by organisations and open data portals which provide unstructured geospatial data. However, there a missing tools which can help geospatial domain experts to bring different types of geospatial data, whether standardised, partially standard or heterogeneous data  on a single map for analysis. In this paper, we provide a geospatial tool, GéoCarteApp, a generic web application which can allow the visualisation of geospatial data irrespective of the data model or format through the use of personalized configurations. In this paper, we describe the tool and show its usefulness for the trees' dataset related to Grenoble. GéoCarteApp is based on a set of configurations that enables the users to visualize geospatial datasets in heterogeneous formats.
-%
+GeoSpatial data is becoming more and more important in numerous domains and available on the Web. Many standards related to geospatial data such as GeoSPARQL or GML have been defined to facilitate interchange, reasoning and querying geodata on the Web. However, there are still many datasets provided by organizations and open data portals which provide unstructured geospatial data. However, there a missing tools which can help geospatial domain experts to bring different types of geospatial data, whether standardized, partially standard or heterogeneous data on a single map for analysis. In this paper, we provide a geospatial tool, GéoCarteApp, a generic web application which can allow the visualization of geospatial data irrespective of the data model or format through the use of personalized configurations. In this paper, we describe the tool and show its usefulness for the trees' dataset related to Grenoble. GéoCarteApp is based on a set of configurations that enables the users to visualize geospatial datasets in heterogeneous formats.%
 }
 
-\summary{%
-GeoSpatial data is becoming more and more important in numerous domains and available on the Web. Many standards related to geospatial data such as GeoSPARQL or GML have been defined to facilitate interchange, reasoning and querying geodata on the Web. However, there are still many datasets provided by organisations and open data portals which provide unstructured geospatial data. However, there a missing tools which can help geospatial domain experts to bring different types of geospatial data, whether standardised, partially standard or heterogeneous data  on a single map for analysis. In this paper, we provide a geospatial tool, GéoCarteApp, a generic web application which can allow the visualisation of geospatial data irrespective of the data model or format through the use of personalized configurations. In this paper, we describe the tool and show its usefulness for the trees' dataset related to Grenoble. GéoCarteApp is based on a set of configurations that enables the users to visualize geospatial datasets in heterogeneous formats.
-%
-}
 
 
 \begin{document}
 % DEBUT DE L'ARTICLE
 %
 \section{Introduction}
+- Spatial data available
+- programatically process to display data on map applications
+- a need to have a generic approach to display data on map
+- as of now, map application already allow drag and drop for data in GeoJSON
+- possible only because data is in a standard and expected data model
+- this features works for homogenous data
+- as of now, many organisations still have their data in different format (RDF,CSV,JSON,...)
+- How can the Semantic Web help in standardising or semi-standardising heterogenous spatial data
+	- many standard have already been defined related spatial data
+		- within the Semantic Web community, some standards and best practices for structuring spatial data are already available such as GeoSPARQL or WGS84 vocabulary 
+- reference for data format % on the open data portals
+- GeoJSON lacks expressivity, RDF is required,
+- Open data, not GeoJSON, inclusion of SPARQL Generate,
 
-\TODO{personalisation} \\
-\TODO{- same type of data but different configurations}\\
-
-\TODO{genericity ; data about other data ; mention of geonames
-    - geoname kinda similar feature but specific to their data structure}\\
-    
-\textit{noresume} qui supprime le résumé mais maintient le summary.
-
-%% section: Approche générique %%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{GéoCarteApp: Approche Générique}
-Visualiser les données géographiques sur le Web est une des premières applications dont un fond de carte permet de localiser les objets dans leurs emplacements. Cependant, lorsque nous avons des données structurées en RDF, les outils traditionnels existants sont limités car il faudrait en plus développer un traducteur permettant de prendre en entrée des données structurées. GéoCarteApp permet de visualiser nativement les données RDF et tout autres types de données spatiales basées sur les standards actuels OGC (geojson, GML, GeoSPARQL, etc). L’approche consiste à filtrer sur les classes, ainsi que les propriétés à visualiser. Par conséquent, l’utilisateur configure les objets à visualiser, avec les icônes personnalisées pour différencier les éléments. Une fois cette configuration effectuée, GéoCarteApp se charge de la visualisation sans autre intervention de l'utilisateur.
-	Le fichier de configuration permet ainsi de prendre des requêtes SPARQL, des URLs pour accéder à des fichiers json/geojson, etc. Ce fichier contient un minimum d’éléments à savoir:
-	\begin{itemize}
-	\item Le type, représentant le marqueur sur la carte,
-	\item Le nom, associé à l’élément à visualiser
-	\item l’url représentant l’image associé à la classe à visualiser
-	\item La description pour le nom
-	\item Un booléen pour savoir si l’élément à visualiser sera visible au lancement de l’application
-	\item La source des données qui précise le type, l’URL ou endpoint et/ou la requête SPARQL.
-	\end{itemize}
-
-
- \begin{lstlisting}[basicstyle=\tiny,float=htb,caption={Exemple de la configuration pour un SPARQL endpoint. },label=list:alignment, language=json]
-   "Test2": {
-			"type": "MarkerLayerConfig",
-			"name": "Test2",
-			"url": "/img/tree/tree-24-32.png",
-			"latCol": "lat",
-			"longCol": "long",
-			"initialShow":true,
-			"markerDescription": "The latitude and longitude for tree with <code> is <lat> and <long> respectively",
-			"description": "Description about Test 2",
-			"dataSource": {
-				"type": "SPARQLDataSource",
-				"url": "http://data.mondeca.com/egc2017/sparql",
-				"query": "PREFIX wgs84_pos:<http:\/\/www.w3.org\/2003\/01\/geo\/wgs84_pos#>\r\nPREFIX rdf: <http:\/\/www.w3.org\/1999\/02\/22-rdf-syntax-ns#>\r\nSELECT ?lat ?long ?code\r\nWHERE {\r\n  ?subject rdf:type <http:\/\/linkedgeodata.org\/ontology\/Tree>;\r\n\t\t wgs84_pos:lat ?lat;\r\n\t\t wgs84_pos:long ?long;\r\n\t\t <http:\/\/data.lof.com\/def\/tonto#code> ?code\r\n}\r\nLIMIT 25"
-			}
-		},
-
-	\end{lstlisting}
+- what about heterogenous data ?
+- for this to work for heterogenous data, there is a need for two things:
+	- an ontology for describing a dataset so that its content can be shown on a map
+	- a processor which can consume data structured as per that ontology and standardise or semi-standardise 
+	data so that map application can unambigiously use it for visualisation
+- is there any work done on this previously, the ontology ?
+- In this paper:
+	- describe the ontology 
+	- describe how the processor works
 	
+	- provide an instance of an application which uses the processor to visualize data from heterogenous sources
+	- how can such appliaction be used for Grenoble data about trees
+
+- Map application does not allow customising data from GeoJSON
+- Does not allow data from heterogenous sources: RDF, CSV, JSON
+- Our approach allows data from GeoJSON as well as RDF and the architecture is such that data from heterogenous sources such as CSV, JSON or even HTML can be considered
+\section{GéoCarteApp: Approche Générique}
+Generic Approach
+---------------
+- architecture
+- displaying RDF data on the map
+- format ontology
+- filtering mechanism
+- SPARQL Generate for other heterogenous data
+- - Using the generic approach, the application displays data on the map using a default approach, where unique colors generated for icons,
+- filters, labels raw, filter options raw labels
+
+- Architecture diagram + possibilities of SPARQL Generate
+- Pop up data items:
+	- key value pairs
+
+- labels 
+- asssociate class names
+- specify pop up data items
+	- labels for different data items
+- different types of constraints
+\section{Customisation/Configuration (source) }
+- Application can show:
+	- RDF dataset
+		- need to specify url of RDF dataset
+		- by default it uses WGS84 ontology to identify latitude and longitude
+		- as of now, works only for Marker layer
+		- can be further generalised with GeoSPARQL ontology to other types of vector layer such as polygon,.. 
+	- SPARQL Results
+		- need to specify:
+			- SPARQL endpoint
+			- SPARQL Query
+			- one solution for each marker
+			- need to specify latitude and longitude
+			- as of now, working only for Marke Layer
+	- GeoJSON data by default
+		- specify URL of GeoJSON file
+		- works for both Marker and Vector Layer
+
+- Default Options
+	- for each layer, there is a default unique color
+	- a default description can be provided
+		- where the popup include a popup with all the property and values for that layer
+	- Filters to be able to search for specific layers based on property and values
+
+Personalisation (Visualisation Part)
+-------------------------------------
+	- layer
+		- derived attributes
+		- specific customization for item with specific attribute
+			- as of now, different icons for different markers having a particular attributes or attribute values
+		- can customize the default desription and include in it property values of the layer
+	- Marker
+		- specify color
+		- specify icon
+	- constraints
+		- area constraints
+			- sometimes, not possible to show all markers
+			- can specifiy section where the markers should be restricted
+			- multiple sectors can be specified then, each marker is shown only if it is in all sections
+
+	- filter labels
+
+- as of now, no user interface to generate configuration, in an ideal situation, a user unaware of technicalities could use data from any source to generate map mashups
+
 \section{Application aux données de Grenoble}
-Nous appliquons notre approche de visualisation des données hétérogènes géospatiales dans le domaine de l’environnement, plus particulièrement dans le meilleur suivi des arbres dans la ville de Grenoble en France. 
 
 \subsection{Transformation et Enrichissement des données}
 
 \subsection{Transformation}
+- ontologies used ?
 
 \subsection{Enrichissement}
-
+	- not yet ?
 
 \section{Cas d'usage}
+- search for trees which have to be diagnose
+- specific icon for trees with allergies
+- others ?
 
-\subsection{Visualiser les arbres proche des trottoirs}
-
-\subsection{Visualiser les arbres ayant des défauts}
-
-\subsection{Visualiser les arbres allergisantes}
-Les arbres peuvent contenir en fonction des espèces botaniques du potentiel allergisant, selon les normes du Réseau national de surveillance aérobiologique (RNSA) qui classe des végétaux produisant des pollens à l'origine de symptômes d'allergie. Ils sont notés de 0 (nul) à 5 (très fort) sur une échelle de «potentiel allergisant». Nous avons modélisé en RDF un sous-ensemble de ces données, que nous avons enrichi nos données initiales sur les arbres de Grenoble\footnote{\url{https://github.com/gatemezing/egc2017/blob/master/defi/rdf-data/genrebotanique.ttl}}. Ainsi, il est donc possible d'avoir des informations sur les arbres pouvant causer des allergies, comme l'indique le tableau~\ref{tab_allergie}.
-
-\begin{table}[ht]
- \begin{center}
-   \tabcolsep = 2\tabcolsep
-   \begin{tabular}{lcc}
-   \hline\hline
-                & Potentiel allergisant & Nbre arbres \\
-   \hline
-   Niveau 5 & 5        & 523       \\
-   Niveau 4  & 4        & 873        \\
-   Niveau 3 & 3       & 2974        \\
-   Niveau 2 & 2       & 550        \\
-   Niveau 1 & 1       & 53        \\
-   Niveau 0 & 0       & 641        \\
-   \hline
-   \end{tabular}
-\caption{Les arbres de Grenoble par potentiel allergisant} \label{tab_allergie}
- \end{center}
-\end{table}
-
+- Species which can create allergies
+- schools + hospital + allergy
+- Species from DBPedia
+- frequentation cible + allergy
 \section{Préconisations sur les données}
-Les données de localisation proposées dans ce défi souffrent du manque des métadonnées nécessaires pour faciliter leur exploitation, au moins sur deux aspects importants: le type de coordonnées géographiques et la correspondance des (X,Y) par rapport aux latitudes et longitudes. Ces éléments sont fondamentaux pour faciliter la réutilisation des données géographiques, surtout en qui concerne le positionnement et la meilleure interprétation des objets contenus dans les données. Il a fallu déterminer par des scripts ad hoc que les données géographiques utilisaient du EPSG:3945 (RGF 93/CC45) en limitant aux systèmes de coordonnées utilisées en France. 
-
-De même, entre les différents fichiers il n’existe pas de relation “explicite” permettant de les relier entre elles, comme les clés dans les bases de données. Ce manque d’information nécessite un travail supplémentaire pour l’utilisateur des données de faire une inférence basée sur le même nombre de lignes dans les différents fichiers pour faire une corrélation de similarité basée sur les lignes.
-
-Nous préconisons de mettre explicitation sur les métadonnées des informations de systèmes de coordonnées, ainsi que la mention de relations existantes entre les différents fichiers à exploiter par les utilisateurs. 
-
-
-
-\subsection{Tables, Figures}
-
-Les tableaux et figures doivent être centrés horizontalement. Les
-légendes sont placées sous ces mêmes éléments et sont centrées si
-elle font moins d'une ligne et justifiées sinon. Voir le
-tableau~\ref{tab_exemple} et la figure~\ref{fig_exemple} pour des
-exemples. Les légendes doivent se terminer avec un point.
-
-
-
-
-
-
-
-%\begin{figure}[t]
-%\begin{center}
-% \includegraphics[width=6cm]{fg_complex}
- %\caption{Exemple de figure avec sa légende. La légende est centrée,
-%sauf si, comme ici, elle fait plus d'une ligne, auquel cas elle est
-%justifiée.} \label{fig_exemple}
-%\end{center}
-%\end{figure}
 
 
 
 
 \section{Conclusion et Perspectives}
 
-Le texte de la note apparaît en bas de la page.\footnote{Exemple de
-note de bas de page.}
-
-
-
-
-\section{Consignes pour les références}
-
-Les références sont données en fin d'article avant le
-\guilo{}Summary\guilf{}. Elles doivent être listées par ordre
-alphabétique.  Nous vous recommandons l'utilisation de
-\textsc{Bib}\TeX\ avec le style bibliographique \textit{rnti.bst}
-décrit dans \citet{ritschard:2005rnti}. Si vous n'utilisez pas ce
-style, merci de suivre les exemples donnés à la fin de cet exemple
-d'article.
-
-Dans le corps du texte, on utilise \citet{thSau00}, \citet{HolWil90}
-pour faire référence à un article avec un ou deux auteurs et
-\citet{lioni01} lorsque trois auteurs ou plus sont présents.  Selon
-les cas, on pourra aussi utiliser \citep{thSau00} ou
-\citep[voir][chapitre 4]{brei:frie:olsh:ston:1984}, ou encore
-\citet{quin:1986ID3,quin:1993} dans le cas de citations multiples
-d'un même auteur. Merci de suivre ces exemples.
-
-
+- the importance of a data model to describe data generically so that it can be used by map application
+	- Perspective
+		- enhance genericity
+			- constraints ?
+	- propose an ontology for such configuration
+	- a definition of the processor to the processing of the dataset
+	- a user interface to allow users to create their own configuration	
+	- other data formats
+	
 
 \bibliographystyle{rnti}
 \bibliography{biblioaz}
-
-\appendix
-
-
-\Fr
-
 
 \end{document}
