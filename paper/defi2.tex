@@ -1,8 +1,49 @@
 \documentclass[a4paper,pagenum,english]{rnti}
 \usepackage{graphicx}
+\usepackage{listings}
+
 \usepackage[T1]{fontenc}
 \usepackage[latin1]{inputenc}
 \usepackage{url}
+
+
+\usepackage{xcolor}
+
+\colorlet{punct}{red!60!black}
+\definecolor{background}{HTML}{EEEEEE}
+\definecolor{delim}{RGB}{20,105,176}
+\colorlet{numb}{magenta!60!black}
+
+\lstdefinelanguage{json}{
+    basicstyle=\normalfont\ttfamily,
+    numbers=left,
+    numberstyle=\scriptsize,
+    stepnumber=1,
+    numbersep=8pt,
+    showstringspaces=false,
+    breaklines=true,
+    frame=lines,
+    backgroundcolor=\color{background},
+    literate=
+     *{0}{{{\color{numb}0}}}{1}
+      {1}{{{\color{numb}1}}}{1}
+      {2}{{{\color{numb}2}}}{1}
+      {3}{{{\color{numb}3}}}{1}
+      {4}{{{\color{numb}4}}}{1}
+      {5}{{{\color{numb}5}}}{1}
+      {6}{{{\color{numb}6}}}{1}
+      {7}{{{\color{numb}7}}}{1}
+      {8}{{{\color{numb}8}}}{1}
+      {9}{{{\color{numb}9}}}{1}
+      {:}{{{\color{punct}{:}}}}{1}
+      {,}{{{\color{punct}{,}}}}{1}
+      {\{}{{{\color{delim}{\{}}}}{1}
+      {\}}{{{\color{delim}{\}}}}}{1}
+      {[}{{{\color{delim}{[}}}}{1}
+      {]}{{{\color{delim}{]}}}}{1},
+}
+
+
 \titrecourt{GeoCarteApp: A generic and personalized tool for the visualization of geospatial data}
 
 \nomcourt{I. Bakerally et al.}
@@ -27,31 +68,70 @@
 \resume{%
 GeoSpatial data is becoming more and more important in numerous domains. Many standards related to geospatial data such as GeoSPARQL or GML have been defined to facilitate interchange, reasoning and querying of geospatial data on the Web. However, there are still many datasets provided by organizations and open data portals which provide unstructured geospatial data. However, there is a need for such a tool which can help domain experts to bring different types of geospatial data, whether standardized, partially standard or heterogeneous data on a single map for analysis. In this paper, we provide a tool, GeoCarteApp, which can allow the visualization of geospatial data irrespective of the data model or format through the use of default or personalized configurations. We describe the tool, its features and show its usefulness for the trees' dataset related to Grenoble%
 }
+
+\summary{ TO CONVERT IN FRENCH:- GeoSpatial data is becoming more and more important in numerous domains. Many standards related to geospatial data such as GeoSPARQL or GML have been defined to facilitate interchange, reasoning and querying of geospatial data on the Web. However, there are still many datasets provided by organizations and open data portals which provide unstructured geospatial data. However, there is a need for such a tool which can help domain experts to bring different types of geospatial data, whether standardized, partially standard or heterogeneous data on a single map for analysis. In this paper, we provide a tool, GeoCarteApp, which can allow the visualization of geospatial data irrespective of the data model or format through the use of default or personalized configurations. We describe the tool, its features and show its usefulness for the trees' dataset related to Grenoble}
 \begin{document}
 \section{Introduction}
 Currently, much data is available from open data portals. These data are encoded in different formats and based on different data models. Much of these data are geospatial data about different themes such as transportation, public services or tourism. These data are based on different data models, sometimes proprietary or sometimes standard. Due to the heterogeneity of geospatial data, map APIs (like Google Maps or MapBox) cannot directly consume the data for visualization purposes. As of now, map applications may directly consume data in GeoJSON, KML, ShapeFile and some others directly. For example, using Google Maps, one may drag and drop a GeoJSON data or text on a map and directly visualize the data. However, this is not yet directly possible for data in different formats and model like RDF, CSV, JSON etc. For example, the LinkedGeoData~\cite{stadler2012linkedgeodata} is a rich source of geospatial data which provides information collected by OpenStreetMap project and makes it available as RDF via their SPARQL endpoint \footnote{http://linkedgeodata.org/sparql} and RDF datasets. SPARQL queries can be written to obtain useful information from this source however the SPARQL results cannot be directly consume by map APIs for visualization. Same is the case for GeoNames or DBpedia and other rich sources of geospatial data. To allow the map application to consume data from heterogeneous sources, one has to programmatically parse the file and use the API to visualize the data on a map which can be a limitation for organization or domain experts not possessing the technical skills to do so.
 
 This problem can be solved by using a generic approach which can allow data of different data models and formats to be automatically visualized on a map. In this paper, (1) we provide a description of the generic approach to generate a default visualization of geospatial data on a map in Section \ref{section:generic}, (2) we explain how this default visualization can be customized through configuration files to allow users to personalize the visualization according to their own preferences in Section \ref{section:customisation}, (3) we consider how this generic approach can help in case of Grenoble ....
 \section{GeoCarteApp: A Generic Approach}\label{section:generic}
-Standards + best practices 
 
-- architecture
-- displaying RDF data on the map
-- format ontology
-- filtering mechanism
-- SPARQL Generate for other heterogenous data
-- - Using the generic approach, the application displays data on the map using a default approach, where unique colors generated for icons,
-- filters, labels raw, filter options raw labels
+\begin{figure}
+\includegraphics[scale=0.6]{img/generic_approach.pdf}
+\caption{Generic Approach to visualize RDF Spatial data}
+\label{fig:generic}
+\end{figure}
+Figure \ref{fig:generic} provides a high-level architecture of GeoCarteApp. The generic processor can consume geospatial data in RDF and produce a default visualization. A sample of this default visualization can be seen in Figure... 
 
-- Architecture diagram + possibilities of SPARQL Generate
-- Pop up data items:
-	- key value pairs
 
-- labels 
-- asssociate class names
-- specify pop up data items
-	- labels for different data items
-- different types of constraints
+
+As of now, the processor can only consume RDF. But it can be easily further enhanced by using SPARQL Generate \footnote{http://ci.emse.fr/sparql-generate/} which produces RDF equivalents of data in other formats. These RDF equivalents can then be used as input to the generic processor.
+
+The default visualization of RDF data is possible only due to standards like GeoSPARQL~[\cite{perry2012ogc}] and Linked Data best practices, like using the WGS84 vocabulary which is highly used by many datasets for encoding geographic coordinates~[\cite{schmachtenberg2014adoption}]. However, if these vocabularies are not used, it is still possible to visualize the data by using customized configurations.
+  
+  
+
+\begin{lstlisting}[language=json,firstnumber=1, caption={Sample default configuration file}\label{listing:default_configuration}]
+{"FranceGeoNames": {
+	"dataSource": {
+	"type": "RDFDataSource",
+	"url": "http://www.geonames.org/3017382/about.rdf"
+	}
+},"Ecoles élementaires": {
+	"dataSource": {
+	"type": "GeoJSONDataSource",
+	"url": "http://sig.grenoble.fr/opendata/Decoupage/json/DECOUPAGE_%C3%89L%C3%89MENTAIRES_EPSG4326.json"
+	}
+},"Arbres": {
+	"latCol": "lat",
+	"longCol": "long",
+	"dataSource": {
+	"type": "SPARQLDataSource",
+	"url": "http://data.mondeca.com/egc2017/sparql",
+	"query": "The SPARQL Query goes here"
+}
+}}
+\end{lstlisting}
+ 
+As shown in Listing \ref{listing:default_configuration}, to produce the default visualization, for RDF, the processor only needs the URL of the RDF file. It then follows GeoSPARQL and WGS84 vocabulary to extract the geospatial data. The processor can also consume SPARQL results. For the set of solutions from the SPARQL results, the column for the latitude and longitude should be specified. Like RDF, a GeoJSON file can stating its URL.
+
+
+- default configuration file
+- default configuration for RDF/SPARQL/GeoJSON
+- default filtering mechanism
+- default visualisation
+	- unique colors
+	- unique color for vectors
+
+
+- Default Options
+	- for each layer, there is a default unique color
+	- a default description can be provided
+		- where the popup include a popup with all the property and values for that layer
+		
+
+
 
 - Application can show:
 	- RDF dataset
@@ -66,6 +146,7 @@ Standards + best practices
 			- one solution for each marker
 			- need to specify latitude and longitude
 			- as of now, working only for Marke Layer
+
 	- GeoJSON data by default
 		- specify URL of GeoJSON file
 		- works for both Marker and Vector Layer
@@ -77,7 +158,10 @@ Standards + best practices
 	- a default description can be provided
 		- where the popup include a popup with all the property and values for that layer
 	- Filters to be able to search for specific layers based on property and values
-
+- Pop up data items:
+	- key value pairs
+	
+	
 Personalisation (Visualisation Part)
 -------------------------------------
 	- layer
@@ -97,6 +181,14 @@ Personalisation (Visualisation Part)
 	- filter labels
 
 - as of now, no user interface to generate configuration, in an ideal situation, a user unaware of technicalities could use data from any source to generate map mashups
+
+
+- labels 
+- asssociate class names
+- specify pop up data items
+	- labels for different data items
+- different types of constraints
+
 
 \section{Application to Grenoble Data}\label{section:customisation}
 
