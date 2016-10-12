@@ -196,9 +196,10 @@ Personalisation (Visualisation Part)
 \subsection{Transformation and Enrichment of Data}
 
 \subsection{Transformation}
-The model use for the conversion of the CSV data is based on 2 classes, 4 object properties and 25 datatypes. 
+% ontologies used and RDF conversion
+The model use for the conversion of the CSV data is based on 2 classes, 4 object properties and 25 datatypes\footnote{\url{https://goo.gl/FTFGbh}}.  
 We use the lgdo:Tree\footnote{\url{http://linkedgeodata.org/ontology/}} to represent the main class. The class \textit{tonto:Sector} is a sublass of a topological entity \textit{topo:EntiteTopographique}\footnote{\url{http://data.ign.fr/def/topo#}}. 
-- ontologies used ?
+
 
 \subsection{Enrichissement}
 % Add here the work done to enrich original dataset
@@ -229,7 +230,7 @@ WHERE {
 - frequentation cible + allergy
 
 \section{Recommendation on the Data}
-% in French
+% in French, to be translated
 Les données de localisation proposées dans ce défi souffrent du manque des métadonnées nécessaires pour faciliter leur exploitation, au moins sur deux aspects importants: le type de coordonnées géographiques et la correspondance des (X,Y) par rapport aux latitudes et longitudes. Ces éléments sont fondamentaux pour faciliter la réutilisation des données géographiques, surtout en qui concerne le positionnement et la meilleure interprétation des objets contenus dans les données. Il a fallu déterminer par des scripts ad hoc que les données géographiques utilisaient du EPSG:3945 (RGF 93/CC45) en limitant aux systèmes de coordonnées utilisées en France. 
 De même, entre les différents fichiers il n’existe pas de relation “explicite” permettant de les relier entre elles, comme les clés dans les bases de données. Ce manque d’information nécessite un travail supplémentaire pour l’utilisateur des données de faire une inférence basée sur le même nombre de lignes dans les différents fichiers pour faire une corrélation de similarité basée sur les lignes.
 Nous préconisons de mettre explicitation sur les métadonnées des informations de systèmes de coordonnées, ainsi que la mention de relations existantes entre les différents fichiers à exploiter par les utilisateurs. 
