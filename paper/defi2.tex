@@ -5,7 +5,7 @@
 \usepackage{url}
 \titrecourt{GeoCarteApp: A generic and personalized tool for the visualization of geospatial data}
 
-\nomcourt{I. NomPremierAuteur et al.}
+\nomcourt{I. Bakerally et al.}
 
 
 \titre{GeoCarteApp: A generic and personalized tool for the visualization of geospatial data}
@@ -27,47 +27,14 @@
 \resume{%
 GeoSpatial data is becoming more and more important in numerous domains. Many standards related to geospatial data such as GeoSPARQL or GML have been defined to facilitate interchange, reasoning and querying of geospatial data on the Web. However, there are still many datasets provided by organizations and open data portals which provide unstructured geospatial data. However, there is a need for such a tool which can help domain experts to bring different types of geospatial data, whether standardized, partially standard or heterogeneous data on a single map for analysis. In this paper, we provide a tool, GeoCarteApp, which can allow the visualization of geospatial data irrespective of the data model or format through the use of default or personalized configurations. We describe the tool, its features and show its usefulness for the trees' dataset related to Grenoble%
 }
-
-
-
 \begin{document}
-% DEBUT DE L'ARTICLE
-%
 \section{Introduction}
-- Spatial data available
-	- linked geodata
+Currently, much data is available from open data portals. These data are encoded in different formats and based on different data models. Much of these data are geospatial data about different themes such as transportation, public services or tourism. These data are based on different data models, sometimes proprietary or sometimes standard. Due to the heterogeneity of geospatial data, map APIs (like Google Maps or MapBox) cannot directly consume the data for visualization purposes. As of now, map applications may directly consume data in GeoJSON, KML, ShapeFile and some others directly. For example, using Google Maps, one may drag and drop a GeoJSON data or text on a map and directly visualize the data. However, this is not yet directly possible for data in different formats and model like RDF, CSV, JSON etc. For example, the LinkedGeoData~\cite{stadler2012linkedgeodata} is a rich source of geospatial data which provides information collected by OpenStreetMap project and makes it available as RDF via their SPARQL endpoint \footnote{http://linkedgeodata.org/sparql} and RDF datasets. SPARQL queries can be written to obtain useful information from this source however the SPARQL results cannot be directly consume by map APIs for visualization. Same is the case for GeoNames or DBpedia and other rich sources of geospatial data. To allow the map application to consume data from heterogeneous sources, one has to programmatically parse the file and use the API to visualize the data on a map which can be a limitation for organization or domain experts not possessing the technical skills to do so.
 
-- programatically process to display data on map applications
-- a need to have a generic approach to display data on map
-- as of now, map application already allow drag and drop for data in GeoJSON
-- possible only because data is in a standard and expected data model
-- this features works for homogenous data
-- as of now, many organisations still have their data in different format (RDF,CSV,JSON,...)
-- How can the Semantic Web help in standardising or semi-standardising heterogenous spatial data
-	- many standard have already been defined related spatial data
-		- within the Semantic Web community, some standards and best practices for structuring spatial data are already available such as GeoSPARQL or WGS84 vocabulary 
-- reference for data format % on the open data portals
-- GeoJSON lacks expressivity, RDF is required,
-- Open data, not GeoJSON, inclusion of SPARQL Generate,
+This problem can be solved by using a generic approach which can allow data of different data models and formats to be automatically visualized on a map. In this paper, (1) we provide a description of the generic approach to generate a default visualization of geospatial data on a map in Section \ref{section:generic}, (2) we explain how this default visualization can be customized through configuration files to allow users to personalize the visualization according to their own preferences in Section \ref{section:customisation}, (3) we consider how this generic approach can help in case of Grenoble ....
+\section{GeoCarteApp: A Generic Approach}\label{section:generic}
+Standards + best practices 
 
-- what about heterogenous data ?
-- for this to work for heterogenous data, there is a need for two things:
-	- an ontology for describing a dataset so that its content can be shown on a map
-	- a processor which can consume data structured as per that ontology and standardise or semi-standardise 
-	data so that map application can unambigiously use it for visualisation
-- is there any work done on this previously, the ontology ?
-- In this paper:
-	- describe the ontology 
-	- describe how the processor works
-	
-	- provide an instance of an application which uses the processor to visualize data from heterogenous sources
-	- how can such appliaction be used for Grenoble data about trees
-
-- Map application does not allow customising data from GeoJSON
-- Does not allow data from heterogenous sources: RDF, CSV, JSON
-- Our approach allows data from GeoJSON as well as RDF and the architecture is such that data from heterogenous sources such as CSV, JSON or even HTML can be considered
-
-\section{ GeoCarteApp: A Generic Approach}
 - architecture
 - displaying RDF data on the map
 - format ontology
@@ -85,7 +52,7 @@ GeoSpatial data is becoming more and more important in numerous domains. Many st
 - specify pop up data items
 	- labels for different data items
 - different types of constraints
-\section{Customisation/Configuration (source) }
+
 - Application can show:
 	- RDF dataset
 		- need to specify url of RDF dataset
@@ -103,6 +70,8 @@ GeoSpatial data is becoming more and more important in numerous domains. Many st
 		- specify URL of GeoJSON file
 		- works for both Marker and Vector Layer
 
+
+\section{Customisation/Configuration (source)}\label{section:customisation}
 - Default Options
 	- for each layer, there is a default unique color
 	- a default description can be provided
@@ -129,7 +98,7 @@ Personalisation (Visualisation Part)
 
 - as of now, no user interface to generate configuration, in an ideal situation, a user unaware of technicalities could use data from any source to generate map mashups
 
-\section{Application to Grenoble Data}
+\section{Application to Grenoble Data}\label{section:customisation}
 
 \subsection{Transformation and Enrichment of Data}
 
@@ -152,10 +121,7 @@ Personalisation (Visualisation Part)
 \section{Recommendation on the Data}
 
 
-
-
 \section{Conclusion and Perspectives}
-
 - the importance of a data model to describe data generically so that it can be used by map application
 	- Perspective
 		- enhance genericity
@@ -164,7 +130,6 @@ Personalisation (Visualisation Part)
 	- a definition of the processor to the processing of the dataset
 	- a user interface to allow users to create their own configuration	
 	- other data formats
-	
 
 \bibliographystyle{rnti}
 \bibliography{biblioaz}
