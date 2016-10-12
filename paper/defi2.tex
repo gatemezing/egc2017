@@ -75,20 +75,58 @@ GeoSpatial data is becoming more and more important in numerous domains. Many st
 Currently, much data is available from open data portals. These data are encoded in different formats and based on different data models. Much of these data are geospatial data about different themes such as transportation, public services or tourism. These data are based on different data models, sometimes proprietary or sometimes standard. Due to the heterogeneity of geospatial data, map APIs (like Google Maps or MapBox) cannot directly consume the data for visualization purposes. As of now, map applications may directly consume data in GeoJSON, KML, ShapeFile and some others directly. For example, using Google Maps, one may drag and drop a GeoJSON data or text on a map and directly visualize the data. However, this is not yet directly possible for data in different formats and model like RDF, CSV, JSON etc. For example, the LinkedGeoData~\cite{stadler2012linkedgeodata} is a rich source of geospatial data which provides information collected by OpenStreetMap project and makes it available as RDF via their SPARQL endpoint \footnote{http://linkedgeodata.org/sparql} and RDF datasets. SPARQL queries can be written to obtain useful information from this source however the SPARQL results cannot be directly consume by map APIs for visualization. Same is the case for GeoNames or DBpedia and other rich sources of geospatial data. To allow the map application to consume data from heterogeneous sources, one has to programmatically parse the file and use the API to visualize the data on a map which can be a limitation for organization or domain experts not possessing the technical skills to do so.
 
 This problem can be solved by using a generic approach which can allow data of different data models and formats to be automatically visualized on a map. In this paper, (1) we provide a description of the generic approach to generate a default visualization of geospatial data on a map in Section \ref{section:generic}, (2) we explain how this default visualization can be customized through configuration files to allow users to personalize the visualization according to their own preferences in Section \ref{section:customisation}, (3) we consider how this generic approach can help in case of Grenoble ....
+
+
+To demonstrate this approach, we provide the description of a generic approach.....
+
+
 \section{GeoCarteApp: A Generic Approach}\label{section:generic}
+
+In this section bla bla bla.... layers, data sources, filtering mechanism, default description..
+
+types of layers in map:
+	- marker
+	- vector
+forms part of a similar layer group	
+By data source, we refer to ..,..,..
 
 \begin{figure}
 \includegraphics[scale=0.6]{img/generic_approach.pdf}
 \caption{Generic Approach to visualize RDF Spatial data}
 \label{fig:generic}
 \end{figure}
-Figure \ref{fig:generic} provides a high-level architecture of GeoCarteApp. The generic processor can consume geospatial data in RDF and produce a default visualization. A sample of this default visualization can be seen in Figure... 
+
+\begin{figure}
+\center
+\includegraphics[scale=0.5]{img/default_filter.png}
+\caption{Default filters for trees}
+\label{fig:default_filter}
+\end{figure}
+
+Figure \ref{fig:generic} provides a high-level architecture of GeoCarteApp. As it be seen, the generic processor can consume RDF, SPARQL results and GeoJSON. As of now, the processor cannot consume data in other heterogeneous formats. But it can be easily further enhanced by using SPARQL Generate  \footnote{http://ci.emse.fr/sparql-generate/} which produces RDF equivalents of data in formats like CSV, JSON, CBOR and others. These RDF equivalents can then be directly input to the generic processor. 
 
 
+The generic processor can consume geospatial data from RDF, SPARQL result and GeoJSON to produce a default visualization. 
 
-As of now, the processor can only consume RDF. But it can be easily further enhanced by using SPARQL Generate \footnote{http://ci.emse.fr/sparql-generate/} which produces RDF equivalents of data in other formats. These RDF equivalents can then be used as input to the generic processor.
 
 The default visualization of RDF data is possible only due to standards like GeoSPARQL~[\cite{perry2012ogc}] and Linked Data best practices, like using the WGS84 vocabulary which is highly used by many datasets for encoding geographic coordinates~[\cite{schmachtenberg2014adoption}]. However, if these vocabularies are not used, it is still possible to visualize the data by using customized configurations.
+
+The generic processor can also consume SPARQL results. In this case, the generic processor will require at least 3 items of data. Firstly,  the variable corresponding to the latitude and longitude in the SPARQL result must be specified. Then, both the URL for the SPARQL endpoint and the SPARQL query must be provided. The SPARQL endpoint is then queried with the query and the SPARQL results are processed. For each solution, the processor creates a layer.
+
+GeoJSON can be directly consume by map APIs like Google Maps\footnote{\url{https://developers.google.com/maps/}} or MapBox\footnote{\url{https://www.mapbox.com}}. However, when consumed via the generic processor, default unique colors are applied to the rendered GeoJSON layers to ensure that it is distinguished among other map layers. This is particulary important if one is making a map mashup whereby data from numerous sources are bring on a single map.
+
+Besides rendering layers on the map, the generic processor does two more things. While processing the data sources, it collects the properties and property values for the objects to be shown on the map. If source is an RDF source, all the property and their values are collected for each unique object. If SPARQL result is used, all variable and their bindings are collected. Finally, if the source GeoJSON, for each object in the \texttt{features} list, the properties and their values are collected from the \texttt{properties} object. Using all these properties and their values for a particular object, the generic processor generates a set of properties and a set of possible values for each properties. Using this, the application provides a default filtering mechanism which can be used to search for specific objects on the map.
+
+Figure \ref{fig:default_filter} shows part of the user interface for default filters of Grenoble trees which comes from a SPARQL result. Similar default filters will be generated if the data source is RDF or GeoJSON. As shown in that figure, there is a set of properties and a set of property values for each property.  
+
+
+A sample of this default visualization can be seen in Figure... 
+
+
+
+
+
+
   
   
 
@@ -117,9 +155,9 @@ The default visualization of RDF data is possible only due to standards like Geo
 As shown in Listing \ref{listing:default_configuration}, to produce the default visualization, for RDF, the processor only needs the URL of the RDF file. It then follows GeoSPARQL and WGS84 vocabulary to extract the geospatial data. The processor can also consume SPARQL results. For the set of solutions from the SPARQL results, the column for the latitude and longitude should be specified. Like RDF, a GeoJSON file can stating its URL.
 
 
-- default configuration file
-- default configuration for RDF/SPARQL/GeoJSON
+
 - default filtering mechanism
+
 - default visualisation
 	- unique colors
 	- unique color for vectors
@@ -189,6 +227,8 @@ Personalisation (Visualisation Part)
 	- labels for different data items
 - different types of constraints
 
+for rdf, associated class
+
 
 \section{Application to Grenoble Data}\label{section:customisation}
 
@@ -222,7 +262,8 @@ Personalisation (Visualisation Part)
 	- a definition of the processor to the processing of the dataset
 	- a user interface to allow users to create their own configuration	
 	- other data formats
-
+	- multiple data source for each layers
+	
 \bibliographystyle{rnti}
 \bibliography{biblioaz}
 
