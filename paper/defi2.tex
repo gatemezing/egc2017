@@ -99,7 +99,7 @@ The default visualization of RDF data is possible only due to standards like Geo
 	"type": "RDFDataSource",
 	"url": "http://www.geonames.org/3017382/about.rdf"
 	}
-},"Ecoles �lementaires": {
+},"Ecoles élementaires": {
 	"dataSource": {
 	"type": "GeoJSONDataSource",
 	"url": "http://sig.grenoble.fr/opendata/Decoupage/json/DECOUPAGE_%C3%89L%C3%89MENTAIRES_EPSG4326.json"
@@ -226,8 +226,11 @@ WHERE {
 - Species from DBPedia
 - frequentation cible + allergy
 
-%\section{Recommendation on the Data}
-
+\section{Recommendation on the Data}
+% in French
+Les données de localisation proposées dans ce défi souffrent du manque des métadonnées nécessaires pour faciliter leur exploitation, au moins sur deux aspects importants: le type de coordonnées géographiques et la correspondance des (X,Y) par rapport aux latitudes et longitudes. Ces éléments sont fondamentaux pour faciliter la réutilisation des données géographiques, surtout en qui concerne le positionnement et la meilleure interprétation des objets contenus dans les données. Il a fallu déterminer par des scripts ad hoc que les données géographiques utilisaient du EPSG:3945 (RGF 93/CC45) en limitant aux systèmes de coordonnées utilisées en France. 
+De même, entre les différents fichiers il n’existe pas de relation “explicite” permettant de les relier entre elles, comme les clés dans les bases de données. Ce manque d’information nécessite un travail supplémentaire pour l’utilisateur des données de faire une inférence basée sur le même nombre de lignes dans les différents fichiers pour faire une corrélation de similarité basée sur les lignes.
+Nous préconisons de mettre explicitation sur les métadonnées des informations de systèmes de coordonnées, ainsi que la mention de relations existantes entre les différents fichiers à exploiter par les utilisateurs. 
 
 \section{Conclusion and Perspectives}
 - the importance of a data model to describe data generically so that it can be used by map application
