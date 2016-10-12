@@ -196,12 +196,14 @@ Personalisation (Visualisation Part)
 \subsection{Transformation and Enrichment of Data}
 
 \subsection{Transformation}
+The model use for the conversion of the CSV data is based on 2 classes, 4 object properties and 25 datatypes. 
+We use the lgdo:Tree\footnote{\url{http://linkedgeodata.org/ontology/}} to represent the main class. The class \textit{tonto:Sector} is a sublass of a topological entity \textit{topo:EntiteTopographique}\footnote{\url{http://data.ign.fr/def/topo#}}. 
 - ontologies used ?
 
 \subsection{Enrichissement}
-	- not yet ?
+% Add here the work done to enrich original dataset
 	- We added information about allergy-inducing trees from Wikipedia: https://fr.wikipedia.org/wiki/Liste_des_plantes_allergisantes
-	
+We used dataset from https://fr.wikipedia.org/wiki/Liste_des_plantes_allergisantes and converted it in RDF to enrich the original dataset with information on allergy for the species of the trees found in Grenoble. 
 
 \section{Use Cases}
 - search for trees which have to be diagnose
