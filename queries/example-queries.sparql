@@ -115,3 +115,27 @@ WHERE {
          wgs84_pos:long ?long.
   Filter (regex(?label, "grenoble", "i"))
 }
+
+## Q8: Plants with family, genus, subjects and more info from DBpedia
+# May help to enrich the "genre botanique" of the trees 
+# endpoint: dbpedia.org/sparql
+prefix dbo: <http://dbpedia.org/ontology/>
+prefix tonto: <http://data.lof.com/def/tonto#>
+PREFIX foaf:   <http://xmlns.com/foaf/0.1/>
+prefix lgdo: <http://linkedgeodata.org/ontology/>
+
+SELECT distinct  ?species ?subject ?familia ?genus ?ordo ?comment ?label
+WHERE
+{ ?s a dbo:Plant; 
+dbo:species ?species.
+?species <http://purl.org/dc/terms/subject> ?subject ;
+ <http://dbpedia.org/property/familia> ?familia ;
+ <http://dbpedia.org/property/genus> ?genus ;
+ <http://dbpedia.org/property/ordo> ?ordo ;
+ rdfs:comment ?comment ;
+ rdfs:label ?label.
+
+filter (langmatches(lang(?comment), "en"))
+filter (langmatches(lang(?label), "en"))
+
+}
