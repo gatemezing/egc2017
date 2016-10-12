@@ -1,45 +1,18 @@
-%% -*- TeX -*- -*- FR -*-
-
-%Avant propos : ces exemples de fichiers ont été mis à jour grâce à
-%l'aide précieuse de Gilbert Ritschard. Pour toute question ou
-%remarque n'hésitez pas à nous contacter : venturin@univ-tours.fr ou
-%gilbert.ritschard@themes.unige.ch
-%Version 2005-10-01
-
-%\documentclass[a4paper,french]{rnti}
-%\documentclass[a4paper,french,noresume]{rnti} %% Pour papier de 2 pages
-
-%%% Avec l'option "showlayout" vous obtenez les deux pages
-%%% de contrôle des paramètres de mise en page.
-
 \documentclass[a4paper,pagenum,english]{rnti}
-
-
-
 \usepackage{graphicx}
-%packages nécessaires pour écrire des articles en français en utilisant les accents non latex.
 \usepackage[T1]{fontenc}
 \usepackage[latin1]{inputenc}
-
-%pour bien présenter les URL et autres adresses emails
 \usepackage{url}
+\titrecourt{GeoCarteApp: A generic and personalized tool for the visualization of geospatial data}
 
-% Titre court pour entête
-\titrecourt{GéoCarteApp: Un outil générique et personnalisable pour la visualisation de données géospatiales}
-
-% Noms auteurs pour entête :
-%    Si un seul auteur, mettre : Initiale. NomPremierAuteur
-%    Si deux auteurs, mettre : Initiale1. NomPremierAuteur et Initiale1. NomDeuxiemeAuteur
-%    Si plus de deux auteurs, mettre comme ci-dessous
-%
 \nomcourt{I. NomPremierAuteur et al.}
 
 
-\titre{GéoCarteApp: Un outil générique et personnalisable pour la visualisation de données géospatiales}
+\titre{GeoCarteApp: A generic and personalized tool for the visualization of geospatial data}
 
 \auteur{Noorani Bakerally\affil{1},
         Ghislain Atemezing\affil{2}\\
-        Antoine Zimmermann\affil{1}\\
+        Antoine Zimmermann\affil{1},
         Olivier Boissier\affil{1}}
 
 \affiliation{
@@ -52,7 +25,7 @@
  }
 
 \resume{%
-GeoSpatial data is becoming more and more important in numerous domains and available on the Web. Many standards related to geospatial data such as GeoSPARQL or GML have been defined to facilitate interchange, reasoning and querying geodata on the Web. However, there are still many datasets provided by organizations and open data portals which provide unstructured geospatial data. However, there a missing tools which can help geospatial domain experts to bring different types of geospatial data, whether standardized, partially standard or heterogeneous data on a single map for analysis. In this paper, we provide a geospatial tool, GéoCarteApp, a generic web application which can allow the visualization of geospatial data irrespective of the data model or format through the use of personalized configurations. In this paper, we describe the tool and show its usefulness for the trees' dataset related to Grenoble. GéoCarteApp is based on a set of configurations that enables the users to visualize geospatial datasets in heterogeneous formats.%
+GeoSpatial data is becoming more and more important in numerous domains. Many standards related to geospatial data such as GeoSPARQL or GML have been defined to facilitate interchange, reasoning and querying of geospatial data on the Web. However, there are still many datasets provided by organizations and open data portals which provide unstructured geospatial data. However, there is a need for such a tool which can help domain experts to bring different types of geospatial data, whether standardized, partially standard or heterogeneous data on a single map for analysis. In this paper, we provide a tool, GeoCarteApp, which can allow the visualization of geospatial data irrespective of the data model or format through the use of default or personalized configurations. We describe the tool, its features and show its usefulness for the trees' dataset related to Grenoble%
 }
 
 
@@ -91,8 +64,7 @@ GeoSpatial data is becoming more and more important in numerous domains and avai
 - Map application does not allow customising data from GeoJSON
 - Does not allow data from heterogenous sources: RDF, CSV, JSON
 - Our approach allows data from GeoJSON as well as RDF and the architecture is such that data from heterogenous sources such as CSV, JSON or even HTML can be considered
-\section{GéoCarteApp: Approche Générique}
-Generic Approach
+\section{ GeoCarteApp: A Generic Approach}
 ---------------
 - architecture
 - displaying RDF data on the map
