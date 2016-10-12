@@ -65,14 +65,15 @@
           %\http{http://www.mondeca.com}
  }
 
-\resume{%
-GeoSpatial data is becoming more and more important in numerous domains. Many standards related to geospatial data such as GeoSPARQL or GML have been defined to facilitate interchange, reasoning and querying of geospatial data on the Web. However, there are still many datasets provided by organizations and open data portals which provide unstructured geospatial data. However, there is a need for such a tool which can help domain experts to bring different types of geospatial data, whether standardized, partially standard or heterogeneous data on a single map for analysis. In this paper, we provide a tool, GeoCarteApp, which can allow the visualization of geospatial data irrespective of the data model or format through the use of default or personalized configurations. We describe the tool, its features and show its usefulness for the trees' dataset related to Grenoble%
-}
+%\resume{%
+%
+%}
 
-\summary{ TO CONVERT IN FRENCH:- GeoSpatial data is becoming more and more important in numerous domains. Many standards related to geospatial data such as GeoSPARQL or GML have been defined to facilitate interchange, reasoning and querying of geospatial data on the Web. However, there are still many datasets provided by organizations and open data portals which provide unstructured geospatial data. However, there is a need for such a tool which can help domain experts to bring different types of geospatial data, whether standardized, partially standard or heterogeneous data on a single map for analysis. In this paper, we provide a tool, GeoCarteApp, which can allow the visualization of geospatial data irrespective of the data model or format through the use of default or personalized configurations. We describe the tool, its features and show its usefulness for the trees' dataset related to Grenoble}
+\summary{GeoSpatial data is becoming more and more important in numerous domains. Many standards related to geospatial data such as GeoSPARQL or GML have been defined to facilitate interchange, reasoning and querying of geospatial data on the Web. However, there are still many datasets provided by organizations and open data portals which provide unstructured geospatial data. However, there is a need for such a tool which can help domain experts to bring different types of geospatial data, whether standardized, partially standard or heterogeneous data on a single map for analysis. In this paper, we provide a tool, GeoCarteApp, which can allow the visualization of geospatial data irrespective of the data model or format through the use of default or personalized configurations. We describe the tool, its features and show its usefulness for the trees' dataset related to Grenoble}
+
 \begin{document}
 \section{Introduction}
-Currently, much data is available from open data portals. These data are encoded in different formats and based on different data models. Much of these data are geospatial data about different themes such as transportation, public services or tourism. These data are based on different data models, sometimes proprietary or sometimes standard. Due to the heterogeneity of geospatial data, map APIs (like Google Maps or MapBox) cannot directly consume the data for visualization purposes. As of now, map applications may directly consume data in GeoJSON, KML, ShapeFile and some others directly. For example, using Google Maps, one may drag and drop a GeoJSON data or text on a map and directly visualize the data. However, this is not yet directly possible for data in different formats and model like RDF, CSV, JSON etc. For example, the LinkedGeoData~\cite{stadler2012linkedgeodata} is a rich source of geospatial data which provides information collected by OpenStreetMap project and makes it available as RDF via their SPARQL endpoint \footnote{http://linkedgeodata.org/sparql} and RDF datasets. SPARQL queries can be written to obtain useful information from this source however the SPARQL results cannot be directly consume by map APIs for visualization. Same is the case for GeoNames or DBpedia and other rich sources of geospatial data. To allow the map application to consume data from heterogeneous sources, one has to programmatically parse the file and use the API to visualize the data on a map which can be a limitation for organization or domain experts not possessing the technical skills to do so.
+Currently, much data is available from open data portals. These data are encoded in different formats and based on different data models. Much of these data are geospatial data about different themes such as transportation, public services or tourism. These data are based on different data models, sometimes proprietary or sometimes standard. Due to the heterogeneity of geospatial data, map APIs (like Google Maps or MapBox) cannot directly consume the data for visualization purposes. As of now, map applications may directly consume data in GeoJSON, KML, ShapeFile and some others directly. For example, using Google Maps, one may drag and drop a GeoJSON data or text on a map and directly visualize the data. However, this is not yet directly possible for data in different formats and model like RDF, CSV, JSON etc. For example, the LinkedGeoData~\cite{stadler2012linkedgeodata} is a rich source of geospatial data which provides information collected by OpenStreetMap project and makes it available as RDF via their SPARQL endpoint \footnote{\url{http://linkedgeodata.org/sparql}} and RDF datasets. SPARQL queries can be written to obtain useful information from this source however the SPARQL results cannot be directly consume by map APIs for visualization. Same is the case for GeoNames or DBpedia and other rich sources of geospatial data. To allow the map application to consume data from heterogeneous sources, one has to programmatically parse the file and use the API to visualize the data on a map which can be a limitation for organization or domain experts not possessing the technical skills to do so.
 
 This problem can be solved by using a generic approach which can allow data of different data models and formats to be automatically visualized on a map. In this paper, (1) we provide a description of the generic approach to generate a default visualization of geospatial data on a map in Section \ref{section:generic}, (2) we explain how this default visualization can be customized through configuration files to allow users to personalize the visualization according to their own preferences in Section \ref{section:customisation}, (3) we consider how this generic approach can help in case of Grenoble ....
 \section{GeoCarteApp: A Generic Approach}\label{section:generic}
@@ -86,7 +87,7 @@ Figure \ref{fig:generic} provides a high-level architecture of GeoCarteApp. The 
 
 
 
-As of now, the processor can only consume RDF. But it can be easily further enhanced by using SPARQL Generate \footnote{http://ci.emse.fr/sparql-generate/} which produces RDF equivalents of data in other formats. These RDF equivalents can then be used as input to the generic processor.
+As of now, the processor can only consume RDF. But it can be easily further enhanced by using SPARQL Generate \footnote{\url{http://ci.emse.fr/sparql-generate/} which produces RDF equivalents of data in other formats. These RDF equivalents can then be used as input to the generic processor.
 
 The default visualization of RDF data is possible only due to standards like GeoSPARQL~[\cite{perry2012ogc}] and Linked Data best practices, like using the WGS84 vocabulary which is highly used by many datasets for encoding geographic coordinates~[\cite{schmachtenberg2014adoption}]. However, if these vocabularies are not used, it is still possible to visualize the data by using customized configurations.
   
@@ -199,10 +200,25 @@ Personalisation (Visualisation Part)
 
 \subsection{Enrichissement}
 	- not yet ?
+	- We added information about allergy-inducing trees from Wikipedia: https://fr.wikipedia.org/wiki/Liste_des_plantes_allergisantes
+	
 
 \section{Use Cases}
 - search for trees which have to be diagnose
 - specific icon for trees with allergies
+
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+
+SELECT ?tree ?genre ?level ?lat ?long
+WHERE {
+  ?tree geo:lat ?lat;
+        geo:long ?long;.
+  GRAPH <http://data.tree.com> {
+    ?tree <http://data.lof.com/def/tonto#genreBotanique> ?genre .
+    ?genre <http://data.lof.com/def/tonto#potentiel_allergisant> ?level }
+  FILTER (?level > 3)
+}
+
 - others ?
 
 - Species which can create allergies
@@ -210,7 +226,7 @@ Personalisation (Visualisation Part)
 - Species from DBPedia
 - frequentation cible + allergy
 
-\section{Recommendation on the Data}
+%\section{Recommendation on the Data}
 
 
 \section{Conclusion and Perspectives}
