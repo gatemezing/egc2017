@@ -1,10 +1,25 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%  Semantic technologies for Airbus use case%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% -*- TeX -*- -*- FR -*-
 
-\documentclass[runningheads,a4paper]{{llncs}}
+%Avant propos : ces exemples de fichiers ont �t� mis � jour gr�ce �
+%l'aide pr�cieuse de Gilbert Ritschard. Pour toute question ou
+%remarque n'h�sitez pas � nous contacter : venturin@univ-tours.fr ou
+%gilbert.ritschard@themes.unige.ch
+%Version 3 2008-05-21
+%Version 3.1 2012-11-26 Bruno Pinaud <bruno.pinaud@labri.fr>
 
+%\documentclass[a4paper,french]{rnti}
+\documentclass[a4paper,english,submission]{rnti}  %% pour soumission � EGC
+
+%\documentclass[a4paper,french,noresume]{rnti} %% Pour papier de 2 pages
+
+%%% Avec l'option "showlayout" vous obtenez les deux pages
+%%% de contr�le des param�tres de mise en page.
+
+%\documentclass[a4paper,footer,english]{rnti}
+
+%packages n�cessaires pour �crire des articles en fran�ais en utilisant les accents non latex.
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc} 
 \usepackage{amssymb}
 \setcounter{tocdepth}{3}
 \usepackage{graphicx}
@@ -17,111 +32,60 @@
 \usepackage{xcolor}
 \usepackage{pifont}
 \usepackage{multirow}
+\usepackage{url}
 
-\newcommand{\keywords}[1]{\par\addvspace\baselineskip
-\noindent\keywordname\enspace\ignorespaces#1}
-% defining checklist in item
-\newcommand{\myitem}{\item[\checkmark]}
-%defining xmark in item
-\newcommand{\xmark}{\ding{55}}
-\newcommand{\xitem}{\item[\xmark]}
 
-% todo macro
-\usepackage{color}
-\newtheorem{deflda}{Axiom}
-\newcommand{\todo}[1]{\noindent\textcolor{red}{{\bf \{TODO}: #1{\bf \}}}}
+% Titre court pour ent�te
+\titrecourt{Annotation s\'emantique des interruptions op\'erationnelles}
 
-% Language Definitions for Turtle
-\definecolor{olivegreen}{rgb}{0.2,0.8,0.5}
-\definecolor{grey}{rgb}{0.5,0.5,0.5}
-\definecolor{background}{HTML}{EEEEEE}
+% Noms auteurs pour ent�te :
+%    Si un seul auteur, mettre : Initiale. NomPremierAuteur
+%    Si deux auteurs, mettre : Initiale1. NomPremierAuteur et Initiale1. NomDeuxiemeAuteur
+%    Si plus de deux auteurs, mettre comme ci-dessous
+%
+\nomcourt{I. Atemezing.}
 
-\lstdefinelanguage{ttl}{
-sensitive=true,
-morecomment=[l][\color{brown}]{@},
-morecomment=[l][\color{red}]{\#},
-morestring=[b][\color{blue}]\",
+\titre{Semantic Annotation and Matching of Operational Interruptions in Aircraft Industry: A Use-Case at Airbus}
+
+\auteur{Ghislain A. Atemezing\affil{1}
+		 }
+
+\affiliation{
+    \affil{1}Mondeca, \\35, Boulevard Strasbourg, Paris France\\
+          ghislain.atemezing@mondeca.com,\\
+          \http{http://www.mondeca.com}\\
+    %
+    
+ }
+
+\resume{%
+Airbus collecte et gère une importante quantité de données non structurées des compagnies aériennes liées à des événements qui se produisent au cours de l’exploitation des avions. Ces événements ou «Interruptions opérationnels» (OI) décrivent des observations et des travaux effectués par les opérateurs sous forme de texte libre. En même temps, Airbus maintient des documents des tâches de maintenance programmée (MPD) pour chaque famille d'avions produits. Les événements déclarés par les compagnies aériennes sont générés manuellement par les experts qui doivent trouver les OIs qui correspondent potentiellement à une tâche existante. Dans cet article, nous décrivons une approche semi-automatique pour assister les experts du domaine dans l’amélioration du processus d'appariement des IOs avec les tâches associées. Notre approche combine l'annotation sémantique et un algorithme d'appariement de graphes. L'évaluation de l'approche présente les avantages de l'utilisation des technologies sémantiques pour gérer les données hétérogènes dans un contexte des pannes des avions. 
+%
 }
 
-\lstdefinelanguage{turtle}
-{
-    columns=fullflexible,
-    keywordstyle=\color{red},
-    morekeywords={PREFIX,SELECT,DISTINCT,UNION,FILTER,ORDER,BY,REGEX,STR,STRSTARTS,GRAPH,isBlank},
-    morecomment=[l]{\#},
-    tabsize=4,
-    frame=lines,
-    numbers=left,
-    numberfirstline=true,
-    xleftmargin=2.5em,
-    framexleftmargin=2.8em,
-    stepnumber=1,    
-    firstnumber=1,
-    alsoletter={-?}, % allowed in names
-    morecomment=[s][\color{blue}]{<}{>},
-    commentstyle=\color{green!40!black},
-    basicstyle=\scriptsize\ttfamily\color{black},
-    %numberstyle=\color{black},
-    morestring=[b][\color{black}]\",
-    backgroundcolor=\color{background},    
-    showstringspaces=false
-}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%  Beginning of document  %%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{document}
-
-
-%\title{Semantic Technologies for Matching Operational Interruptions to Tasks in Aircraft Industry }
-%\title{Assessing Operational Interruptions in Aircraft Industry With Semantic Technologies: A Use-Case at Airbus}
-\title{Semantic Annotation and Matching of Operational Interruptions in Aircraft Industry: A Use-Case at Airbus}
-%\subtitle{Classifying vocabularies }
-
-\author{ Ghislain Auguste Atemezing\inst{1}, Dang Nguyen-manh\inst{2} }
-
-\institute{
-MONDECA, 35 Boulevard de Strasbourg, Paris, France. \\
-\and Airbus, Toulouse, France.\\
-\email{ghislain.atemezing@mondeca.com} \\
-\email{dang.nguyeng-manh@airbus.com} \\
-}
-  
-
-
-% a short form should be given in case it is too long for the running head
-\titlerunning{Semantics Applied to Detecting OIs in Aircraft Industry}	
-
-
-\maketitle
-
-%%%%%%%%%%%%%%%%%%
-%%%  Abstract  %%%
-%%%%%%%%%%%%%%%%%%
-
-\begin{abstract}
-
+\summary{%
+% not exceed 150 words
 Airbus, one of the leading Aircraft company in Europe, collects and manages a substantial amount of unstructured data from airlines companies, related to events occurring during the exploitation of an aircraft. Those events are called ``Operational Interruptions'' (OI) describing observations and the work performed associated by operators in form of short text. At the same time, Airbus maintains a dataset of programmed maintenance task (MPD) for each family of aircraft.  Currently, OIs are reported by companies  in Excel spreadsheets and experts have to find manually in the OIs the ones that are most likely to match an existing task. In this paper, we describe a semi-automatic approach using semantic technologies to assist the experts of the domain to improve the matching process of OIs with related MPD. Our approach combines text annotation using GATE and a graph matching algorithm. The evaluation of the approach shows the benefits of using semantic technologies to manage unstructured data and future applications for data integration at Airbus.    
 
-\keywords{Information Retrieval, tagging system, Graph matching, CA-Manager, GATE, Airbus}
-\end{abstract}
+%
+}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%  1. Introduction  %%%
-%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{document}
+%\layout
+
+% DEBUT DE L'ARTICLE
+%
 \section{Introduction}
 \label{sec:introduction}
-Semantics enable machine-to-machine exchange and automated processing of data to facilitate the integration of business processes and systems~\cite{cardoso2007}. The main goal of having machine readable information is to search, reuse information and develop innovative applications easier. 
-Semantic Web~\cite{berners2001} technologies are becoming more and more adopted outside the research communities or academics. The most promising of adopting these technologies is the benefits of using open standards developed by the W3C. Linked (open) data~\cite{bizer2009} has already shown its application in many domains, such as health, cultural heritage, libraries, etc. What is starting to appear is the use of semantics in aircraft industries where some often tools developed by the semantic web are perceived to be not mature enough by expert domains. This paper describes the challenges of using semantic technologies for matching events occurred during the exploitation of an aircraft reported by a company with the official list of maintenance programmed by Airbus during the life-cycle of a given aircraft. The goal is to update the maintenance task (MPD) with new issues if the detection of operational interruptions (OIs) is relevant. The ultimate goal is to anticipate failures reported by the aircraft companies to the manufacturer. The main contributions of this paper are the following: (i) Capture the implicit knowledge of expert domains in RDF for generating gazetteers using SKOS~\cite{skosw3c} concepts;  (ii) propose and implement a semantic annotation workflow to detect relevant OIs concepts and (iii) implement a robust graph matching algorithm to make recommendation to expert for assessment and validation. The results obtained are very promising as we are able to obtain a high level detected OIs (81.52\%) with a very limited amount of keywords provided by experts (less than 150 concepts in the gazetteer). The paper is structured as follow: In Section~\ref{sec:statement}, an overview of the domain expertise and problem statement are presented, followed by the vocabularies and data model in Section~\ref{sec:data-model}. Section~\ref{sec:a330rdf} describes the dataset converted in RDF. The semantic annotation is described in Section~\ref{sec:annotation}, then the graph matching algorithm is presented in Section~\ref{sec:matching}. The experiments and lessons learned are respectively presented in Section~\ref{sec:exp-results} and Section~\ref{sec:lessons}. Section~\ref{sec:soa} briefly expose some related work before concluding of the paper.    
-
-%\todo{Show the problem and implication}
-
-
+% use citep for citations here
+Semantics enable machine-to-machine exchange and automated processing of data to facilitate the integration of business processes and systems~\citep{cardoso2007}. The main goal of having machine readable information is to search, reuse information and develop innovative applications easier. 
+Semantic Web~\citep{berners2001} technologies are becoming more and more adopted outside the research communities or academics. The most promising of adopting these technologies is the benefits of using open standards developed by the W3C. Linked (open) data~\citep{bizer2009} has already shown its application in many domains, such as health, cultural heritage, libraries, etc. What is starting to appear is the use of semantics in aircraft industries where some often tools developed by the semantic web are perceived to be not mature enough by expert domains. This paper describes the challenges of using semantic technologies for matching events occurred during the exploitation of an aircraft reported by a company with the official list of maintenance programmed by Airbus during the life-cycle of a given aircraft. The goal is to update the maintenance task (MPD) with new issues if the detection of operational interruptions (OIs) is relevant. The ultimate goal is to anticipate failures reported by the aircraft companies to the manufacturer. The main contributions of this paper are the following: (i) Capture the implicit knowledge of expert domains in RDF for generating gazetteers using SKOS~\citep{skosw3c} concepts;  (ii) propose and implement a semantic annotation workflow to detect relevant OIs concepts and (iii) implement a robust graph matching algorithm to make recommendation to expert for assessment and validation. The results obtained are very promising as we are able to obtain a high level detected OIs (81.52\%) with a very limited amount of keywords provided by experts (less than 150 concepts in the gazetteer). The paper is structured as follow: In Section~\ref{sec:statement}, an overview of the domain expertise and problem statement are presented, followed by the vocabularies and data model in Section~\ref{sec:data-model}. Section~\ref{sec:a330rdf} describes the dataset converted in RDF. The semantic annotation is described in Section~\ref{sec:annotation}, then the graph matching algorithm is presented in Section~\ref{sec:matching}. The experiments and lessons learned are respectively presented in Section~\ref{sec:exp-results} and Section~\ref{sec:lessons}. Section~\ref{sec:soa} briefly expose some related work before concluding of the paper.    
 
 \section{Problem Statement}
 \label{sec:statement}
-In this section, we describe the scope of the domain at Aircraft and the main challenge of the provided solution in this paper. We first describe the concepts related to aircraft domain of our study, and then presents the approach using semantic technologies to tackle this real-world use-case.
+% reduce this section
+%In this section, we describe the scope of the domain at Aircraft and the main challenge of the provided solution in this paper. We first describe the concepts related to aircraft domain of our study, and then presents the approach using semantic technologies to tackle this real-world use-case.
 
 \subsection{Domain Description}
 Operational interruptions (OIs) are incidents occurring during the use of the aircraft, with an impact on commercial exploitation. All maintenance events are not OIs though: we need a minimal delay time for this to be considered an OI, i.e., if the cause is neutralized very quickly, an OI is not generated). Secondly, the OIs are not only technical incidents due to an aircraft: a crew arriving late because the van had broken down can also be an OI. Also, some elements occurring in the plane does not have a "technical" cause: for example, a collision with a bird (bird strike) will require maintenance, while the plane itself was not involved.
@@ -143,7 +107,7 @@ This paper solves the following challenge: identify the indirect link between OI
 
 \subsection{Our Approach}
 \label{sec:approach}
-The main challenge is to assist the expert with a reduced list of OIs candidates that can be matched with some existing tasks in the MPD. The top down approach takes a task, uses the list of keywords and the implicit knowledge of the expert (e.g., experience) and try to match with OI. Currently this is the approach manually used by domain experts by means of formulas in spreadsheets to find and filter sets of OIs based on list of keywords. A second approach consisting a fully automatic process, from OIs annotations and matching without experts in the loop (bottom-up approach) was not acceptable by the domain experts. We define an \textit{hybrid approach} where the expert can assess and validate the results of the approach, consisting of the following (as shown in Figure~\ref{fig:approach}):
+The main challenge is to assist the expert with a reduced list of OIs candidates that can be matched with some existing tasks in the MPD. The top down approach takes a task, uses the list of keywords and the implicit knowledge of the expert (e.g., experience) and try to match with OI. Currently this is the approach manually used by domain experts by means of formulas in spreadsheets to find and filter sets of OIs based on list of keywords. A second approach consisting a fully automatic process, from OIs annotations and matching without experts in the loop (bottom-up approach) was not acceptable by the domain experts. We define an \textit{hybrid approach} where the expert can assess and validate the results of the approach, consisting of the following :
 \begin{enumerate}
 \item OIs are annotated with keywords from the experts.
 \item MP tasks already treated are modeled in RDF with associated keywords.
@@ -151,12 +115,12 @@ The main challenge is to assist the expert with a reduced list of OIs candidates
 \item Experts evaluate and validate the suggested OIs candidates.
 \end{enumerate}  
 
-\begin{figure}[!htb]
-\centering
-\includegraphics[scale=0.6]{img/ourapproach.png}
-\caption{The hybrid approach used to match the OI descriptions with MPD tasks, using semantic technologies.}
-\label{fig:approach}
-\end{figure}
+%\begin{figure}[!htb]
+%\centering
+%\includegraphics[scale=0.6]{img/ourapproach.png}
+%\caption{The hybrid approach used to match the OI descriptions with MPD tasks, using semantic technologies.}
+%\label{fig:approach}
+%\end{figure}
 
 
 \section{Vocabularies and Data Model}
@@ -177,11 +141,12 @@ The OI vocabulary\footnote{\url{http://data.airbus.com/def/oi#}} is a lightweigh
 
 \subsection{Task vocabulary}
 \label{sec:mpd-vocab} 
-A vocabulary\footnote{\url{http://data.airbus.com/def/tf#}} for describing the relationships the failures and the maintenance tasks has been created to build a knowledge graph for integrating different silos of documents in Airbus organization. Currently, four main classes are defined: \textsf{tf:Task}, \textsf{tf:MRBR}, \textsf{tf:Failure} and \textsf{tf:ProgramTask}. Figure \ref{figtaskresource} shows an excerpt of the current usage of the vocabulary.   
+A vocabulary\footnote{\url{http://data.airbus.com/def/tf#}} for describing the relationships the failures and the maintenance tasks has been created to build a knowledge graph for integrating different silos of documents in Airbus organization. Currently, four main classes are defined: \textsf{tf:Task}, \textsf{tf:MRBR}, \textsf{tf:Failure} and \textsf{tf:ProgramTask}. 
+%Figure \ref{figtaskresource} shows an excerpt of the current usage of the vocabulary.   
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[scale=0.60]{img/task-mpd-graph.png}
+\includegraphics[scale=0.4]{img/task-mpd-graph.png}
 \caption{A sample graph showing the relations between tasks, master documents and failures using the mpd-vocabulary.}
 \label{figtaskresource}
 \end{figure}
@@ -192,10 +157,13 @@ A vocabulary\footnote{\url{http://data.airbus.com/def/tf#}} for describing the r
 One of the main challenge in the generation of RDF data from the different spreadsheets is to create unique URIs to identify instances of the classes from the vocabularies. Each element of the graph should be identified uniquely with a persistent URI. The chosen scheme for the URI for generating RDF dataset is the following:
 \textit{http://data.airbus.com/id/\{class\}/\{aircraft-family\}/\{year\}/\{code\}} \\
 where \{class\} is one of (oi, task, mrbr) ; \{aircraft-family\} is one of (a330, a320) ; \{Year\} a four digit for the year and \{code\} is generated by concatenating a number of the XLS file name + raw number in the file. For example, this URI <\url{http://data.airbus.com/id/oi/a330/2014/07011231177}> represents in the Knowledge Graph the OI for an A330 received in 2014, where the description is within the file "isaim-a330-2014-0701to1231.xls", line 177. Table~\ref{tab:graphdata} shows the generated graphs in RDF for the two aircraft families: A330 and A320 for the period 2013 to 2015. 
-The conversion process of the all the Excel files is performed by the Datalift~\cite{scharffe2012} platform, using custom CONSTRUCT SPARQL queries to transform columns to specific classes and properties.  
+
+%The conversion process of the all the Excel files is performed by the Datalift~\cite{scharffe2012} platform, using custom CONSTRUCT SPARQL queries to transform columns to specific classes and properties.  
+
 
 \begin{table}[!htb]
-\centering
+\begin{center}
+   \tabcolsep = 2\tabcolsep
 \begin{tabular}{|c|c|c||c|c|c|}
 
 \hline 
@@ -211,6 +179,7 @@ A330 & 60,867 & 21,400 & 54,457 & 6.871 & 4,234 \\
 \end{tabular} 
 \caption{Overall number of the data converted into RDF by family of Aircraft for the period 2013-2014 for A330 and 2014-2015 for A320.}
 \label{tab:graphdata}
+\end{center}
 \end{table}
 
 \section{Semantic Annotation}
@@ -241,10 +210,10 @@ The architecture of the workflow consists of the following modules:
 The skos-ification process consists of manually convert the keywords used by the expert of the domain into SKOS concepts that is later used for generating the gazetteers during the annotation. Since the input file are DOCX files, we manually create the RDF file in Turtle. Some rules and hypothesis are made during the process based on different interviews with the experts of the domain:
 
 \begin{itemize}
-\myitem Ordinal numbers such as ``Third'', ``First'', etc. are not taken into account. 
-\myitem A keyword can not be at the same time in the description AND in the action work performed of the OI. The two sets are DISJOINTS.
-\myitem Descriptors SHOULD be short concepts(names), with variants in the case of verbs that are treated as SYNONYMS (see sample below in Turtle format)
-\myitem Expressions of type \textit{Not[properly][term]} are modeled as just [term a skos:Concept].
+\item Ordinal numbers such as ``Third'', ``First'', etc. are not taken into account. 
+\item A keyword can not be at the same time in the description AND in the action work performed of the OI. The two sets are DISJOINTS.
+\item Descriptors SHOULD be short concepts(names), with variants in the case of verbs that are treated as SYNONYMS (see sample below in Turtle format)
+\item Expressions of type \textit{Not[properly][term]} are modeled as just [term a skos:Concept].
 For e.g.,  in the case of the term ``not properly closed'', we only model the concept ``close'' with the variant closed. 
 \end{itemize}
 
@@ -266,16 +235,14 @@ SKOS concept & 47 & 45 & 22 & 16 & 130 \\
 \end{tabular} 
 
 \end{table}
-%include turtle sample starts here
 
-\lstinputlisting[breaklines=true,language=turtle]{data/skos-sample.ttl}
 
-\begin{figure}[!htb]
-\centering
-\includegraphics[scale=0.6]{img/descriptors_oi.png}
-\caption{A sample of SKOS concepts used to model the experts' keywords  and linked to a task and maintenance graph}
-\label{figdescriptors}
-\end{figure}
+%\begin{figure}[!htb]
+%\centering
+%\includegraphics[scale=0.6]{img/descriptors_oi.png}
+%\caption{A sample of SKOS concepts used to model the experts' keywords  and linked to a task and maintenance graph}
+%\label{figdescriptors}
+%\end{figure}
 
 The experiment described in this paper uses 20 tasks with keywords annotated manually by experts. Together with the corresponding task, the resulting file represents a gold standard where the descriptors are linked to appropriate task, as it is depicted in Figure \ref{figdescriptors}
 
@@ -290,7 +257,7 @@ The annotation process employed is based on a central component: the Content Aug
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[scale=0.6]{img/cam_fig1.png}
+\includegraphics[scale=0.4]{img/cam_fig1.png}
 \caption{Pipeline of annotation using CA-Manager}
 \label{figcam}
 \end{figure}
@@ -303,6 +270,8 @@ We first create the gazetteer with the SKOS document obtained from the experts. 
 
 \section{Graph Matching Algorithm}
 \label{sec:matching}
+
+Algorithm~\ref{graphmatching} (Relax version) is the first variant for creating candidates because of the lines 13, 23 and 26 of the algorithm, with the use the logical UNION operator to determining the intermediate sets for comparison and the resulting set of candidates in $C$. In this case, $C = UNION(P,Q,P',Q')$ where $P = UnionOfDescActions$, $Q = UnionOfDescItems$, $P' = UnionOfWorkActions$ and $Q' = UnionOfWorkItems$. All the queries used in the algorithm are based on SPARQL and the computation of the sets involving intersections make use of the LIMES~\citep{ngonga11} matching tool.  A second approach for a less relax version (LRX-version) is to modify the lines 14, 24 and 27 respectively in Algorithm~\ref{graphmatching} by doing the adjustments described in Algorithm~\ref{graphmatching2}.
 
 \begin{algorithm}[h]\scriptsize
  \caption{GraphMatching (OI-Graph,MPD-Graph) - RLX Version}
@@ -342,7 +311,7 @@ We first create the gazetteer with the SKOS document obtained from the experts. 
  \ENDFOR	  
  
   \STATE SELECT OIs in the set $Description$ \textbf{OR} $WorkPerformed$.	
-   \STATE COMPUTE $C =UNION(R, R’) = R + R’ - INTERSECTION (R, R’) $
+   \STATE COMPUTE $C =UNION(R, R?) = R + R? - INTERSECTION (R, R?) $
 
 
     \RETURN $C$
@@ -350,9 +319,7 @@ We first create the gazetteer with the SKOS document obtained from the experts. 
 \end{algorithmic}
 \end{algorithm}
  
-Algorithm~\ref{graphmatching} (Relax version) is the first variant for creating candidates because of the lines 13, 23 and 26 of the algorithm, with the use the logical UNION operator to determining the intermediate sets for comparison and the resulting set of candidates in $C$. In this case, $C = UNION(P,Q,P',Q')$ where $P = UnionOfDescActions$, $Q = UnionOfDescItems$, $P' = UnionOfWorkActions$ and $Q' = UnionOfWorkItems$. All the queries used in the algorithm are based on SPARQL and the computation of the sets involving intersections make use of the LIMES~\cite{ngonga11} matching tool.  
 
-A second approach for a less relax version (LRX-version) is to modify the lines 14, 24 and 27 respectively in Algorithm~\ref{graphmatching} by doing the adjustments described in Algorithm~\ref{graphmatching2}.
 
 
  
@@ -380,7 +347,7 @@ We perform the annotation of $21,400$ OIs consisting of the descriptions and the
  ......
  \STATE COMPUTE $R' = UNION(Q,Q')$ \\
  ......
- \STATE COMPUTE $C = INTERSECTION(R, R’)$
+ \STATE COMPUTE $C = INTERSECTION(R, R?)$
 
 \RETURN $C$
   \STATE END
@@ -419,23 +386,26 @@ Graph & Feature & Number \\
 \subsection{Results}
 \label{sec:results}
 
+
 \begin{table}[!htp]
 \scriptsize
-\centering
+\begin{center}
+   \tabcolsep = 2\tabcolsep
 
-\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|} 
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|} 
 \hline 
-Task ID & P & P' & Q & Q' & Inter(P,Q) & Inter(P',Q') & R=Union(P,Q) & R'=Union(P',Q') & Inter(R,R') & Union(R,R') \\ 
+Task ID & P & P' & Q & Q'  & R=Union(P,Q) & R'=Union(P',Q') & Union(R,R') \\ 
 \hline 
-MPD245000031 & 545 & 271 & 129 & 0 & 41 & 0 & 633 & 271 & 2 & \textbf{902}\\ 
+MPD245000031 & 545 & 271 & 129 & 0 &  633 & 271 &  \textbf{902}\\ 
 \hline 
-MPD271400031 & 110 & 306 & 0 & 366 & 0 & 250 & 110 & 422 & 7 & \textbf{525} \\ 
+MPD271400031 & 110 & 306 & 0 & 366  & 110 & 422 &  \textbf{525} \\ 
 \hline 
-MPD235100021 & 545 & 271 & 109 & 0 & 19 & 0 & 635 & 271 & 1 & \textbf{905} \\  
+MPD235100021 & 545 & 271 & 109 & 0 &  635 & 271 &  \textbf{905} \\  
 \hline 
 \end{tabular} 
 \caption{Results of the matching process in terms of size of the candidates using Algorithm~\ref{graphmatching} with three tasks for A330 and the OIs of the same aircraft family during the year 2013-2014.}
 \label{tab:algo1}
+\end{center}
 \end{table}
 
 In a more open criteria, as it is the case with algorithm~\ref{graphmatching}, we obtain the tasks T1(MPD245000031), T2 (MPD271400031) and T3 (MPD235100021) 902, 525 and 905 potential candidates. That means almost more than 95\% of the OIs are not relevant at all to those three tasks. But still many OIs to review by a human expert. So, after some interviews with the domain experts, the LRX-version of the algorithm (see Algorithm~\ref{graphmatching2}) is implemented suggesting a more reduced set of candidates, without loosing any good candidate. With this variant, it reduces significantly the number of the candidates (an average of 63\%) for reviewing.    
@@ -466,24 +436,22 @@ One of the barrier in the adoption of Semantic technologies in industry is the d
 
 The team in charge of collecting the OIs from diverse companies and experts working on maintenance tasks has to progressively make a mental shift with the new paradigms introduced during this project:
 \begin{itemize}
-\xitem Data model by implementing vocabularies with Prot\'eg\'e~\cite{noy2001} from scratch driven by the existing data.
-\xitem The notion of unique identifiers to be used across different data silos to represent the same real world object. Hence, a policy for creating persistent URIs was clearly identified as crucial
-\xitem The confusion between the RDF model and the different serializations 
+\item Data model by implementing vocabularies with Prot\'eg\'e~\citep{noy2001} from scratch driven by the existing data.
+\item The notion of unique identifiers to be used across different data silos to represent the same real world object. Hence, a policy for creating persistent URIs was clearly identified as crucial
+\item The confusion between the RDF model and the different serializations 
 \end{itemize}  
 
-This work also permits to identify many datasets that could be useful in other services at Airbus to bring more context. For example, during some interviews, the experts realized that some implicit knowledge can be derived actually from existing datasets, which otherwise are experts' experience. Moreover, the system proposed would not replace the experts but assist them in their work to speed up the process. This requirement 
+This work also permits to identify many datasets that could be useful in other services at Airbus to bring more context. For example, during some interviews, the experts realized that some implicit knowledge can be derived actually from existing datasets, which otherwise are experts' experience. Moreover, the system proposed would not replace the experts but assist them in their work to speed up the process.
 
-Additionally, the conversion process into RDF reveals some errors in the legacy data. For example, sometimes there were not consistent use of the task code across different XLS files. This shows the benefits of our approach compared to existing one as it helps detecting and cleaning errors in the data.    
-
-As the result of this work, the expert team is looking at a better combination for the output sets to adjust the proposed algorithm based on their evaluation of the proposed candidates. 
+Additionally, the conversion process into RDF reveals some errors in the legacy data. For example, sometimes there were not consistent use of the task code across different XLS files. This shows the benefits of our approach compared to existing one as it helps detecting and cleaning errors in the data.  As the result of this work, the expert team is looking at a better combination for the output sets to adjust the proposed algorithm based on their evaluation of the proposed candidates. 
   
-
-
+%%% Section related %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Related Work}
 \label{sec:soa}
 
-This work falls under contributions and research in the intersection of natural language processing with GATE, enterprise semantic data management and matching techniques. The authors in~\cite{Uren200614} examine semantic annotation, identify a number of requirements, and review the generation of semantic annotation systems. 
-Recently, in~\cite{andrews2012} it is defined a state of the art in semantic annotation models and a scheme that can be used to clarify requirements of end-user use cases. Moreover, the collection of real world applications from industry in~\cite{cardoso2007} tackle some challenges in the earlier adoption of semantic technologies in industry. Although some issues remind challenging today, a diversity of domains applying semantics is visible worldwide. To the best of our knowledge, this paper is the first applying semantics in aircraft industry.  
+This work falls under contributions and research in the intersection of natural language processing with GATE, enterprise semantic data management and matching techniques. The authors in~\citep{Uren200614} examine semantic annotation, identify a number of requirements, and review the generation of semantic annotation systems. 
+Recently, in~\citep{andrews2012} it is defined a state of the art in semantic annotation models and a scheme that can be used to clarify requirements of end-user use cases. Moreover, the collection of real world applications from industry in~\citep{cardoso2007} tackle some challenges in the earlier adoption of semantic technologies in industry. Although some issues remind challenging today, a diversity of domains applying semantics is visible worldwide. To the best of our knowledge, this paper is the first applying semantics in aircraft industry.  
 
 
 
@@ -506,7 +474,13 @@ For future work, we plan to improve the semantic annotation by looking at the be
 \paragraph{\textbf{Acknowledgments.}} %\label{sec:acknowledgments}
 We would like to thank the Airbus team in Toulouse and ATOS colleagues for their valuable input and partnership.
 
-\bibliographystyle{abbrv}
-%\nocite{*}
-\bibliography{iswc2016}
+
+\bibliographystyle{rnti}
+\bibliography{egc2017}
+
+
+
+\Fr
+
+
 \end{document}
