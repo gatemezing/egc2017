@@ -65,15 +65,18 @@
           %\http{http://www.mondeca.com}
  }
 
-\resume{%
-GeoSpatial data is becoming more and more important in numerous domains. Many standards related to geospatial data such as GeoSPARQL or GML have been defined to facilitate interchange, reasoning and querying of geospatial data on the Web. However, there are still many datasets provided by organizations and open data portals which provide unstructured geospatial data. However, there is a need for such a tool which can help domain experts to bring different types of geospatial data, whether standardized, partially standard or heterogeneous data on a single map for analysis. In this paper, we provide a tool, GeoCarteApp, which can allow the visualization of geospatial data irrespective of the data model or format through the use of default or personalized configurations. We describe the tool, its features and show its usefulness for the trees' dataset related to Grenoble%
- TO OUR KNOWLEDGE, NO SUCH APPROACH HAVE BEEN DEFINED }
+
+
+
+\summary{GeoSpatial data is becoming more and more important in numerous domains. Many standards related to geospatial data such as GeoSPARQL or GML have been defined to facilitate interchange, reasoning and querying of geospatial data on the Web. However, there are still many datasets provided by organizations and open data portals which provide unstructured geospatial data. However, there is a need for such a tool which can help domain experts to bring different types of geospatial data, whether standardized, partially standard or heterogeneous data on a single map for analysis. In this paper, we provide a tool, GeoCarteApp, which can allow the visualization of geospatial data irrespective of the data model or format through the use of default or personalized configurations. We describe the tool, its features and show its usefulness for the trees' dataset related to Grenoble}
 
 \begin{document}
 \section{Introduction}
-Currently, much data is available from open data portals. These data are encoded in different formats and based on different data models. Much of these data are geospatial data about different themes such as transportation, public services or tourism. These data are based on different data models, sometimes proprietary or sometimes standard. Due to the heterogeneity of geospatial data, map APIs (like Google Maps or MapBox) cannot directly consume the data for visualization purposes. As of now, map applications may directly consume data in GeoJSON, KML, ShapeFile and some others directly. For example, using Google Maps, one may drag and drop a GeoJSON data or text on a map and directly visualize the data. However, this is not yet directly possible for data in different formats and model like RDF, CSV, JSON etc. For example, the LinkedGeoData~\cite{stadler2012linkedgeodata} is a rich source of geospatial data which provides information collected by OpenStreetMap project and makes it available as RDF via their SPARQL endpoint \footnote{http://linkedgeodata.org/sparql} and RDF datasets. SPARQL queries can be written to obtain useful information from this source however the SPARQL results cannot be directly consume by map APIs for visualization. Same is the case for GeoNames or DBpedia and other rich sources of geospatial data. To allow the map application to consume data from heterogeneous sources, one has to programmatically parse the file and use the API to visualize the data on a map which can be a limitation for organization or domain experts not possessing the technical skills to do so.
+Currently, much data is available from open data portals. These data are encoded in different formats and based on different data models. Much of these data are geospatial data about different themes such as transportation, public services or tourism. These data are based on different data models, sometimes proprietary or sometimes standard. Due to the heterogeneity of geospatial data, map APIs (like Google Maps or MapBox) cannot directly consume the data for visualization purposes. As of now, map applications may directly consume data in GeoJSON, KML, ShapeFile and some others directly. For example, using Google Maps, one may drag and drop a GeoJSON data or text on a map and directly visualize the data. However, this is not yet directly possible for data in different formats and model like RDF, CSV, JSON etc. For example, the LinkedGeoData~\cite{stadler2012linkedgeodata} is a rich source of geospatial data which provides information collected by OpenStreetMap project and makes it available as RDF via their SPARQL endpoint \footnote{\url{http://linkedgeodata.org/sparql}} and RDF datasets. SPARQL queries can be written to obtain useful information from this source however the SPARQL results cannot be directly consume by map APIs for visualization. Same is the case for GeoNames or DBpedia and other rich sources of geospatial data. To allow the map application to consume data from heterogeneous sources, one has to programmatically parse the file and use the API to visualize the data on a map which can be a limitation for organization or domain experts not possessing the technical skills to do so.
 
 This problem can be solved by using a generic approach which can allow data of different data models and formats to be automatically visualized on a map. In this paper, (1) we provide a description of the generic approach to generate a default visualization of geospatial data on a map in Section \ref{section:generic}, (2) we explain how this default visualization can be customized through configuration files to allow users to personalize the visualization according to their own preferences in Section \ref{section:customisation}, (3) we consider how this generic approach can help in case of Grenoble ....
+
+
 
 
 To demonstrate this approach, we provide the description of a generic approach.....
@@ -116,7 +119,11 @@ By data source, we refer to ..,..,..
 Figure \ref{fig:generic} provides a high-level architecture of GeoCarteApp. As it be seen, the generic processor can consume RDF, SPARQL results and GeoJSON. As of now, the processor cannot consume data in other heterogeneous formats. But it can be easily further enhanced by using SPARQL Generate  \footnote{http://ci.emse.fr/sparql-generate/} which produces RDF equivalents of data in formats like CSV, JSON, CBOR and others. These RDF equivalents can then be directly input to the generic processor. 
 
 
+
 The generic processor can consume geospatial data from RDF, SPARQL result and GeoJSON to produce a default visualization. 
+
+
+As of now, the processor can only consume RDF. But it can be easily further enhanced by using SPARQL Generate \footnote{\url{http://ci.emse.fr/sparql-generate/} which produces RDF equivalents of data in other formats. These RDF equivalents can then be used as input to the generic processor.
 
 
 The default visualization of RDF data is possible only due to standards like GeoSPARQL~[\cite{perry2012ogc}] and Linked Data best practices, like using the WGS84 vocabulary which is highly used by many datasets for encoding geographic coordinates~[\cite{schmachtenberg2014adoption}]. However, if these vocabularies are not used, it is still possible to visualize the data by using customized configurations.
@@ -140,7 +147,7 @@ The generic processor can generate a default description for each object. The ma
 	"type": "RDFDataSource",
 	"url": "http://www.geonames.org/3017382/about.rdf"
 	}
-},"Ecoles élementaires": {
+},"Ecoles Ã©lementaires": {
 	"dataSource": {
 	"type": "GeoJSONDataSource",
 	"url": "http://sig.grenoble.fr/opendata/Decoupage/json/DECOUPAGE_%C3%89L%C3%89MENTAIRES_EPSG4326.json"
@@ -196,6 +203,7 @@ We use the lgdo:Tree\footnote{\url{http://linkedgeodata.org/ontology/}} to repre
 
 \subsection{Enrichissement}
 % Add here the work done to enrich original dataset
+
 	- We added information about allergy-inducing trees from Wikipedia: %https://fr.wikipedia.org/wiki/Liste_des_plantes_allergisantes
 We used dataset from 
 %https://fr.wikipedia.org/wiki/Liste_des_plantes_allergisantes
@@ -205,16 +213,19 @@ linkedgeodata
 
 
 
+% We added information about allergy-inducing trees from Wikipedia: https://fr.wikipedia.org/wiki/Liste_des_plantes_allergisantes
+%We used dataset from https://fr.wikipedia.org/wiki/Liste_des_plantes_allergisantes and converted it in RDF to enrich the original dataset with information on allergy for the species of the trees found in Grenoble. 
+
+
 \section{Use Cases}
 - search for trees which have to be diagnose
 - specific icon for trees with allergies
-
-- others ?
-
+- others: See Q8 for more info from DBpedia regarding species if needed to enrich more our dataset.
 - Species which can create allergies
 - schools + hospital + allergy
-- post offices in Grenoble  see query 7 here https://github.com/gatemezing/egc2017/blob/master/queries/example-queries.sparql 
+- post offices in Grenoble  see query 7 here %https://github.com/gatemezing/egc2017/blob/master/queries/example-queries.sparql 
 - Species from DBPedia
+- Species from DBPedia (see Q8 for a sample query)
 - frequentation cible + allergy
 \section{Recommendation on the Data}
 % in French, to be translated
@@ -222,11 +233,10 @@ Les données de localisation proposées dans ce défi souffrent du manque des métad
 De même, entre les différents fichiers il n?existe pas de relation ?explicite? permettant de les relier entre elles, comme les clés dans les bases de données. Ce manque d?information nécessite un travail supplémentaire pour l?utilisateur des données de faire une inférence basée sur le même nombre de lignes dans les différents fichiers pour faire une corrélation de similarité basée sur les lignes.
 Nous préconisons de mettre explicitation sur les métadonnées des informations de systèmes de coordonnées, ainsi que la mention de relations existantes entre les différents fichiers à exploiter par les utilisateurs. 
 
-
-
 \section{Conclusion and Perspectives}
 More and more geospatial data is now available with the idea of open data. This can create interesting usage use cases for both normal citizens and organizations. Map mashups can be created and provided on the Web for day to day scenarios or for analysis by domain experts. However, there is a lack of tool for the on-the-fly consumption of geospatial data in any format for visualization purposes. To our knowledge, there is no proposed approach for directly consuming geospatial data for map visualization from any data format. To this end, we propose a generic approach which can work without any configurations. We also propose the ability to define customisations in a configuration file to produce highly personalized visualization and filtering. As a proof of concept, we provide a toy application on the Web which is though not optimized but is fully function. As of now, using the application may be complex for non-technical users. This is because configuration files needs to be hand written. As a perspective, we consider the possibility of having user interfaces to help non-technical users in automatically generating configurations. Moreover, the configurations is not yet fully finalized and it will be an opportunity to have a vocabulary for to concertize the configurations and enhance its usage by interested parties. Last but not least, our future work includes the extension of this approach to consider other data formats such CSV, JSON and others. 
 \paragraph{Acknowledgements} This work has been done within the OpenSensingCity project, supported by ANR (Agence Nationale de la Recherche), Project ID: ANR-14-CE24-0029.
+
 \bibliographystyle{rnti}
 \bibliography{biblioaz}
 \end{document}
